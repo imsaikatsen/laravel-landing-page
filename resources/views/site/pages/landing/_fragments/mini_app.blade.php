@@ -64,22 +64,17 @@
         @foreach ($miniApps as $index => $app)
             <div class="position-relative">
                 <a href="{{ route('miniapp.show',$app->slug) }}" class="app-card">
-                    {{-- @if (($index + 1) % 5 == 0)
-                        <span class="icon-badge">免费</span>
-                    @endif --}}
-
                     <div class="app-icon-wrapper">
                         <img src="/miniapps/{{ $app->appImage }}" alt="{{ $app->appTitle }}">
                     </div>
 
                     <div class="app-label">
-                        <td>{!! hexEncode($app->appTitle) !!}</td>
+                        {!! hexEncode($app->appTitle) !!}
                     </div>
                 </a>
-                {{-- @foreach ($miniApps as $app)
-                    {!! $app->customScript !!}
-                @endforeach --}}
             </div>
         @endforeach
     </div>
 </div>
+
+{!! $seo['miniapp']->customScript ?? '' !!}

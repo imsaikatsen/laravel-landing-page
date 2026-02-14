@@ -53,7 +53,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Add HTML / JS</label>
-                <textarea name="customScript" class="form-control" placeholder="Custom JS / Script">{{ old('customScript') }}</textarea>
+                <textarea name="customScript" class="form-control" placeholder="Custom JS / Script">{{ $app->customScript }}</textarea>
             </div>
 
 

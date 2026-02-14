@@ -117,7 +117,7 @@
                 No Live Zone Found
             </div>
         @endforelse
-
     </div>
-
 </div>
+
+{!! $seo['live']->customScript ?? '' !!}

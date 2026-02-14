@@ -186,3 +186,5 @@
     </div>
 </div>
 
+{!! $seo['dating']->customScript ?? '' !!}
+
