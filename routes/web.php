@@ -9,6 +9,7 @@ use App\Http\Controllers\LiveZoneController;
 use App\Http\Controllers\MallProductController;
 use App\Http\Controllers\PageSeoController;
 use App\Http\Controllers\Site\LandingPageController;
+use App\Http\Controllers\SlugController;
 
 
 Route::get('/', function () {
@@ -50,7 +51,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/miniapp/{id}/destroy', [MiniAppController::class, 'destroy'])->name('miniapp.destroy');
 });
 
-Route::get('/miniapp/{slug}', [MiniAppController::class, 'show'])->name('miniapp.show');
+// Route::get('/miniapp/{slug}', [MiniAppController::class, 'show'])->name('miniapp.show');
 
 
 Route::middleware(['auth'])->group(function () {
@@ -62,7 +63,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/datingzone/{id}/delete', [DatingZoneController::class, 'destroy'])->name('datingzone.destroy');
 });
 
-Route::get('/datingzone/{slug}', [DatingZoneController::class, 'show'])->name('datingzone.show');
+// Route::get('/datingzone/{slug}', [DatingZoneController::class, 'show'])->name('datingzone.show');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/livezone', [LiveZoneController::class, 'index'])->name('livezone.index');
@@ -73,7 +74,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/livezone/{id}/destroy', [LiveZoneController::class, 'destroy'])->name('livezone.destroy');
 });
 
-Route::get('/livezone/{slug}', [LiveZoneController::class, 'show'])->name('livezone.show');
+// Route::get('/livezone/{slug}', [LiveZoneController::class, 'show'])->name('livezone.show');
 
 
 Route::middleware(['auth'])->group(function () {
@@ -86,7 +87,7 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-Route::get('/mallproducts/{slug}', [MallProductController::class, 'show'])->name('mallproducts.show');
+// Route::get('/mallproducts/{slug}', [MallProductController::class, 'show'])->name('mallproducts.show');
 
 Route::middleware(['auth'])->group(function () {
 
@@ -102,6 +103,7 @@ Route::delete('/pageseo/{id}/destroy', [PageSeoController::class,'destroy'])->na
 
 Route::get('/', [LandingPageController::class, 'index']);
 
+Route::get('/{slug}', [SlugController::class, 'resolve'])->name('slug.resolve');
 
 
 require __DIR__ . '/auth.php';
