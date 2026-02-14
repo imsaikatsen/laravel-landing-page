@@ -90,8 +90,7 @@
 
         @forelse($liveZones as $zone)
             <div class="col-6">
-
-                <a href="/livezone/{{ $zone->slug }}" class="zone-card shadow-sm">
+                <a href="{{ route('slug.resolve', $zone->slug) }}" class="zone-card shadow-sm">
                     <div class="zone-image-wrapper">
                         @if ($zone->image)
                             <img src="{{ asset('livezones/' . $zone->image) }}" alt="">
@@ -120,4 +119,3 @@
     </div>
 </div>
 
-{!! $seo['live']->customScript ?? '' !!}

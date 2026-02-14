@@ -24,9 +24,7 @@ body{
     margin:0;
 }
 </style>
-
 </head>
-
 <body>
 
 @yield('page')

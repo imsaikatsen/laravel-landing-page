@@ -85,7 +85,7 @@
 
         @forelse($mallProducts as $prod)
             <div class="col-6 mb-2">
-                <a href="{{ route('mallproducts.show', $prod->slug) }}" class="text-decoration-none">
+                <a href="{{ route('slug.resolve', $prod->slug) }}" class="text-decoration-none">
                     <div class="mall-card shadow-sm">
                         <div class="position-relative">
                             @if ($prod->image)
@@ -144,5 +144,3 @@
 
     </div>
 </div>
-
-{!! $seo['mall']->customScript ?? '' !!}
