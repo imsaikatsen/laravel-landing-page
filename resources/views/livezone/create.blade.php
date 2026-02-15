@@ -22,8 +22,14 @@
 
                 <div class="col-md-6 mb-3">
                     <label>Image</label>
-                    <input type="file" name="image" class="form-control">
+                    <input type="file" name="image" id="imageInput" class="form-control">
+                    <div id="js-image-error" style="color: red; display: none; font-size: 0.8rem; margin-top: 5px;">
+                        File is too large! Please select an image under 2MB.
+                    </div>
                 </div>
+
+
+        
 
                 <div class="col-12 mb-3">
                     <label>Description</label>
@@ -51,18 +57,34 @@
         </form>
     </div>
 
+    <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+
     <!-- Frontend Validation Script -->
-<script>
-    (function () {
-        'use strict'
-        const form = document.getElementById('mallForm')
-        form.addEventListener('submit', function (event) {
-            if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
-            }
-            form.classList.add('was-validated')
-        }, false)
-    })()
-</script>
+    <script>
+        (function () {
+            'use strict'
+            const form = document.getElementById('mallForm')
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+                form.classList.add('was-validated')
+            }, false)
+        })()
+    </script>
+
+    <script>
+    $('#imageInput').on('change', function() {
+        const file = this.files[0];
+        const limit = 2 * 1024 * 1024;
+
+        if (file && file.size > limit) {
+            $('#js-image-error').show();
+            $(this).val(''); // Reset file input
+        } else {
+            $('#js-image-error').hide();
+        }
+    });
+    </script>
 @endsection
