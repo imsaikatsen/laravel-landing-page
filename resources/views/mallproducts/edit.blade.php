@@ -89,6 +89,11 @@
                 <input type="text" class="form-control" name="metaKeywords" value="{{ $product->metaKeywords }}">
             </div>
 
+            <div class="mb-3">
+                <label class="form-label">Meta Title</label>
+                <input type="text" name="metaTitle" class="form-control form-control-lg" value="{{ old('metaTitle',$product->metaTitle) }}">
+            </div>
+            
             <!-- Meta Description -->
             <div class="col-12">
                 <label class="form-label">Meta Description</label>

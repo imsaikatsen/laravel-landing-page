@@ -27,7 +27,7 @@ class LiveZoneController extends Controller
         ]);
 
         $data = $request->only([
-            'title', 'slug', 'description', 'tag1', 'tag2', 'count', 'metaKeywords', 'metaDescription', 'customScript'
+            'title', 'slug', 'description', 'tag1', 'tag2', 'count', 'metaKeywords', 'metaTitle', 'metaDescription', 'customScript'
         ]);
 
         $data['slug'] = generate_slug($request->title);
@@ -61,7 +61,7 @@ class LiveZoneController extends Controller
         ]);
 
         $data = $request->only([
-            'title', 'slug', 'description', 'tag1', 'tag2', 'count', 'metaKeywords', 'metaDescription', 'customScript'
+            'title', 'slug', 'description', 'tag1', 'tag2', 'count', 'metaKeywords', 'metaTitle', 'metaDescription', 'customScript'
         ]);
 
         $data['slug'] = generate_slug($request->title);

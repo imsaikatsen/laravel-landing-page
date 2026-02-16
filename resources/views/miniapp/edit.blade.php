@@ -48,6 +48,11 @@
             </div>
 
             <div class="mb-3">
+                <label class="form-label">Meta Title</label>
+                <input type="text" name="metaTitle" class="form-control form-control-lg" value="{{ $app->metaTitle }}">
+            </div>
+
+            <div class="mb-3">
                 <label class="form-label">Meta Description</label>
                 <textarea name="metaDescription" class="form-control">{{ $app->metaDescription }}</textarea>
             </div>
