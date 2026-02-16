@@ -17,6 +17,7 @@ class MallProduct extends Model
         'is_new',
         'description',
         'metaKeywords',
+        'metaTitle',
         'metaDescription',
         'customScript'
     ];

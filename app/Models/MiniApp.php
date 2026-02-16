@@ -13,6 +13,7 @@ class MiniApp extends Model
         'appTitle',
         'appImage',
         'metaKeywords',
+        'metaTitle',
         'metaDescription',
         'customScript',
         'slug',
