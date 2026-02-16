@@ -1,10 +1,15 @@
 @extends('site.layouts.main-layout')
 
-@section('title', $product->title)
-@section('meta_keywords', $product->metaKeywords ?? '')
-@section('meta_description', $product->metaDescription ?? '')
+
 
 @section('page')
+
+@push('meta')
+    <title>吴梦梦电视剧在线观看|{{ ($product->metaTitle) }}</title>
+    <meta name="title" content="{{ hexEncode($product->metaTitle) }}">
+    <meta name="keywords" content="{{ hexEncode($product->metaKeywords) }}">
+    <meta name="description" content="{{ hexEncode($product->metaDescription) }}">
+@endpush
 
 <style>
     .product-detail-card {
