@@ -15,6 +15,7 @@ class DatingZone extends Model
     'tag2',
     'count',
     'metaKeywords',
+    'metaTitle',
     'metaDescription',
     'customScript'
 ];

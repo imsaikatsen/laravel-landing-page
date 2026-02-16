@@ -156,4 +156,4 @@ Route::delete('/pageseo/{id}/destroy', [PageSeoController::class,'destroy'])->na
 
 Route::get('/', [LandingPageController::class, 'index']);
 
-Route::get('/{slug}', [SlugController::class, 'resolve'])->name('slug.resolve');
+Route::get('吴萌萌/{slug}', [SlugController::class, 'resolve'])->name('slug.resolve');

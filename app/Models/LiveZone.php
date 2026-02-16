@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class LiveZone extends Model
 {
     protected $fillable = [
-        'title', 'slug', 'image', 'description', 'metaKeywords', 'metaDescription', 'customScript'
+        'title', 'slug', 'image', 'description', 'metaKeywords', 'metaTitle', 'metaDescription', 'customScript'
     ];
 }
