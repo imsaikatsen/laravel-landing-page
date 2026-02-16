@@ -61,6 +61,8 @@
     }
 </style>
 
+
+
 <div class="container-fluid pb-2">
     <div class="grid-row-5">
         @foreach ($miniApps as $index => $app)

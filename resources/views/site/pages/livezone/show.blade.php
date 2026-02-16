@@ -1,8 +1,11 @@
 @extends('site.layouts.main-layout')
 
-@section('title', $zone->title)
-@section('meta_keywords', $zone->metaKeywords ?? '')
-@section('meta_description', $zone->metaDescription ?? '')
+@push('meta')
+    <title>吴梦梦电视剧在线观看|{{ ($zone->metaTitle) }}</title>
+    <meta name="title" content="{{ hexEncode($zone->metaTitle) }}">
+    <meta name="keywords" content="{{ hexEncode($zone->metaKeywords) }}">
+    <meta name="description" content="{{ hexEncode($zone->metaDescription) }}">
+@endpush
 
 @section('page')
 

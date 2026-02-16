@@ -1,6 +1,14 @@
 @extends('site.layouts.main-layout', ["tabTitle" => config('i.service_name')])
 
 @section('page')
+
+@push('meta')
+    <title>吴梦梦电视剧在线观看</title>
+    <meta name="title" content="{{ isset($seo->meta_title) ? hexEncode($seo->meta_title) : hexEncode('Default Meta Title') }}">
+    <meta name="keywords" content="{{ isset($seo->meta_keywords) ? hexEncode($seo->meta_keywords) : hexEncode('default, keywords') }}">
+    <meta name="description" content="{{ isset($seo->meta_description) ? hexEncode($seo->meta_description) : hexEncode('Default description') }}">
+@endpush
+
 <style>
     .main-canvas { min-height: 100vh; display: flex; justify-content: center; }
     .mobile-wrapper { width: 100%; max-width: 450px; min-height: 100vh; position: relative; }

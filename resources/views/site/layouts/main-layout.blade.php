@@ -5,10 +5,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>{{ isset($seo->title) ? hexEncode($seo->title) : hexEncode('APP') }}</title>
-<meta name="title" content="{{ isset($seo->meta_title) ? hexEncode($seo->meta_title) : hexEncode('Default Meta Title') }}">
-<meta name="keywords" content="{{ isset($seo->meta_keywords) ? hexEncode($seo->meta_keywords) : hexEncode('default, keywords') }}">
-<meta name="description" content="{{ isset($seo->meta_description) ? hexEncode($seo->meta_description) : hexEncode('Default description') }}">
+@stack('meta')
+
 {!! $seo?->customScript ?? '' !!}
 
 

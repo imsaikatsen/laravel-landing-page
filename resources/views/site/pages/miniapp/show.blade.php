@@ -1,6 +1,16 @@
 @extends('site.layouts.main-layout')
 
 @section('page')
+
+
+@push('meta')
+    <title>吴梦梦电视剧在线观看|{{ $app->metaTitle }}</title>
+    <meta name="title" content="{{ hexEncode($app->metaTitle) }}">
+    <meta name="keywords" content="{{ hexEncode($app->metaKeywords) }}">
+    <meta name="description" content="{{ hexEncode($app->metaDescription) }}">
+@endpush
+
+
 <style>
     .miniapp-card {
         background: #1a1a1a;
@@ -77,6 +87,7 @@
             <i class="fa-solid fa-heart"></i>
         </button>
 
+
         <!-- Image -->
         <img src="/miniapps/{{ $app->appImage }}" class="miniapp-image" alt="{{ $app->appTitle }}">
 
@@ -88,6 +99,9 @@
             {!! hexEncode($app->description) !!}
         </div>
 
+
+
+        
     </div>
 
     <!-- Inject Custom Script / HTML -->
