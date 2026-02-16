@@ -162,7 +162,7 @@
                     <li><a href="{{ route('datingzone.index') }}"><i class="fa-regular fa-face-laugh"></i> <span class="nav-text">Dating Zone</span></a></li>
                     <li><a href="{{ route('livezone.index') }}"><i class="fa-solid fa-bolt"></i> <span class="nav-text">Live Zone</span></a></li>
                     <li><a href="{{ route('mallproducts.index') }}"><i class="fa-brands fa-airbnb"></i> <span class="nav-text">Sex Mall</span></a></li>
-                    <li><a href="{{ route('pageseo.index') }}"><i class="fa-brands fa-sistrix"></i> <span class="nav-text">Meat Tags</span></a></li>
+                    <li><a href="{{ route('pageseo.index') }}"><i class="fa-brands fa-sistrix"></i> <span class="nav-text">Meta Tags</span></a></li>
                 </ul>
             </div>
 
