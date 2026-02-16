@@ -29,7 +29,7 @@ class MallProductController extends Controller
         $data = $request->all();
 
         // Auto slug
-        $slug = Str::slug($request->title);
+        $slug = generate_slug($request->title);
         $count = MallProduct::where('slug', 'LIKE', "$slug%")->count();
         $data['slug'] = $count ? "{$slug}-{$count}" : $slug;
 
@@ -67,7 +67,7 @@ class MallProductController extends Controller
         // Auto slug regenerate if title changed
         if ($request->title !== $product->title) {
 
-            $slug = Str::slug($request->title);
+            $slug = generate_slug($request->title);
             $count = MallProduct::where('slug', 'LIKE', "$slug%")
                 ->where('id', '!=', $product->id)
                 ->count();

@@ -21,13 +21,12 @@ class DatingZoneController extends Controller
 
     public function store(Request $request)
     {
-
         $imageName = time() . '.' . $request->image->extension();
         $request->image->move(public_path('datingzones'), $imageName);
 
         DatingZone::create([
             'title' => $request->title,
-            'slug' => Str::slug($request->title),
+            'slug' => generate_slug($request->title),
             'description' => $request->description,
             'tag1' => $request->tag1,
             'tag2' => $request->tag2,

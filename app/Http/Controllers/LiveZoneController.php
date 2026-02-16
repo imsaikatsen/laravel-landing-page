@@ -30,6 +30,8 @@ class LiveZoneController extends Controller
             'title', 'slug', 'description', 'tag1', 'tag2', 'count', 'metaKeywords', 'metaDescription', 'customScript'
         ]);
 
+        $data['slug'] = generate_slug($request->title);
+
         if($request->hasFile('image')){
             $imageName = time().'.'.$request->image->extension();
             $request->image->move(public_path('livezones'), $imageName);
@@ -61,6 +63,8 @@ class LiveZoneController extends Controller
         $data = $request->only([
             'title', 'slug', 'description', 'tag1', 'tag2', 'count', 'metaKeywords', 'metaDescription', 'customScript'
         ]);
+
+        $data['slug'] = generate_slug($request->title);
 
         if($request->hasFile('image')){
             if($zone->image && file_exists(public_path('livezones/'.$zone->image))){
