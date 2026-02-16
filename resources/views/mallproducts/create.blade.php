@@ -85,6 +85,10 @@
                 <input type="text" class="form-control" name="metaKeywords" placeholder="Enter Meta Keywords">
             </div>
 
+            <label class="form-label">Meta Title</label>
+            <input type="text" name="metaTitle" class="form-control form-control-lg" placeholder="Enter Meta Title"
+                value="{{ old('metaTitle') }}">
+
             <!-- Meta Description -->
             <div class="col-12">
                 <label class="form-label">Meta Description</label>

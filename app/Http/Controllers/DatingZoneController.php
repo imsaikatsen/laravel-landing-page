@@ -32,6 +32,7 @@ class DatingZoneController extends Controller
             'tag2' => $request->tag2,
             'count' => $request->count,
             'metaKeywords' => $request->metaKeywords,
+            'metaTitle' => $request->metaTitle,
             'metaDescription' => $request->metaDescription,
             'customScript' => $request->customScript,
             'image' => $imageName,
@@ -48,7 +49,6 @@ class DatingZoneController extends Controller
 
     public function update(Request $request, $id)
     {
-
         $zone = DatingZone::findOrFail($id);
 
         if ($request->hasFile('image')) {

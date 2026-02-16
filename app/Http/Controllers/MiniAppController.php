@@ -37,6 +37,7 @@ class MiniAppController extends Controller
             'slug' => generate_slug($request->appTitle),
             'appImage' => $imageName,
             'metaKeywords' => $request->metaKeywords,
+            'metaTitle' => $request->metaTitle,
             'metaDescription' => $request->metaDescription,
             'customScript' => $request->customScript
         ]);
@@ -66,6 +67,7 @@ class MiniAppController extends Controller
             'description' => $request->description,
             'slug' => generate_slug($request->appTitle),
             'metaKeywords' => $request->metaKeywords,
+            'metaTitle' => $request->metaTitle,
             'metaDescription' => $request->metaDescription,
             'customScript' => $request->customScript
         ]);

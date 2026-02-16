@@ -44,6 +44,11 @@
                     <input type="text" name="metaKeywords" value="{{ $zone->metaKeywords }}" class="form-control">
                 </div>
 
+                <div class="mb-3">
+                    <label class="form-label">Meta Title</label>
+                    <input type="text" name="metaTitle" class="form-control form-control-lg" value="{{ old('metaTitle',$zone->metaTitle) }}">
+                </div>
+
                 <div class="col-md-6 mb-3">
                     <label>Meta Description</label>
                     <input type="text" name="metaDescription" value="{{ $zone->metaDescription }}" class="form-control">
