@@ -6,7 +6,6 @@ use App\Models\MiniApp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-
 class MiniAppController extends Controller
 {
     public function index()
@@ -31,15 +30,15 @@ class MiniAppController extends Controller
         $imageName = time() . '.' . $request->appImage->extension();
         $request->appImage->move(public_path('miniapps'), $imageName);
 
+        
         MiniApp::create([
             'appTitle' => $request->appTitle,
             'description' => $request->description,
-            'slug' => Str::slug($request->appTitle),
+            'slug' => generate_slug($request->appTitle),
             'appImage' => $imageName,
             'metaKeywords' => $request->metaKeywords,
             'metaDescription' => $request->metaDescription,
             'customScript' => $request->customScript
-
         ]);
 
         return redirect()->route('miniapp.index')->with('success', 'Mini App Added');
@@ -65,7 +64,7 @@ class MiniAppController extends Controller
         $app->update([
             'appTitle' => $request->appTitle,
             'description' => $request->description,
-            'slug' => Str::slug($request->appTitle),
+            'slug' => generate_slug($request->appTitle),
             'metaKeywords' => $request->metaKeywords,
             'metaDescription' => $request->metaDescription,
             'customScript' => $request->customScript

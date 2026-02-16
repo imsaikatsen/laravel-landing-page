@@ -27,7 +27,8 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-        "app/Helpers/Obfuscate.php"
+        "app/Helpers/Obfuscate.php",
+        "app/Helpers/CommonSlug.php"
     ]
     },
     "autoload-dev": {
