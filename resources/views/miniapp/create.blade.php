@@ -30,8 +30,8 @@
             </div>
 
              <div class="mb-3">
-                <label class="form-label">App Description</label>
-                <textarea name="description" class="form-control mb-2" placeholder="Description"></textarea>
+                <label class="form-label">App Content</label>
+                <textarea name="description" class="form-control mb-2" placeholder="Description">{{ old('description') }}</textarea>
             </div>
 
             <div class="mb-3">
