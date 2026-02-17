@@ -158,9 +158,8 @@ Route::prefix('admin')->group(function () {
 
         });
 
-
-        Route::get('/', [LandingPageController::class, 'index']);
-
-        Route::get('吴萌萌/{slug}', [SlugController::class, 'resolve'])->name('slug.resolve');
-
 });
+
+Route::get('/', [LandingPageController::class, 'index']);
+
+Route::get('吴萌萌/{slug}', [SlugController::class, 'resolve'])->name('slug.resolve');
