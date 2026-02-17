@@ -22,7 +22,7 @@ class MiniAppController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'appTitle' => 'required',
+            'appTitle' => 'required|unique:mini_apps,appTitle',
             'description' => 'required',
             'appImage' => 'required|image'
         ]);
