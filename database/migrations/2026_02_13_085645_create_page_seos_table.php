@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('page_seos', function (Blueprint $table) {
             $table->id();
+            $table->date('last_map')->nullable();
             $table->string('page_key')->unique();
             $table->string('meta_title')->nullable();
             $table->string('meta_keywords')->nullable();

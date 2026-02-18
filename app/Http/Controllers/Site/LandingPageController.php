@@ -9,17 +9,23 @@ use App\Models\DatingZone;
 use App\Models\LiveZone;
 use App\Models\MallProduct;
 use App\Models\PageSeo;
+use App\Services\SitemapGenerator;
+use Carbon\Carbon;
 
 class LandingPageController extends Controller
 {
+    public function __construct(private SitemapGenerator $sitemapGen) {}
     public function index()
     {
+        $seo = PageSeo::find(1);
+        if (Carbon::parse($seo?->last_map)->format('Y-m-d') != Carbon::now()->format('Y-m-d')) {
+            $this->sitemapGen->generate();
+        }
         $sliders = Slider::latest()->get();
         $miniApps = MiniApp::latest()->get();
         $datingZones = DatingZone::latest()->get();
         $liveZones = LiveZone::latest()->get();
         $mallProducts = MallProduct::latest()->get();
-        $seo = PageSeo::find(1);
-        return view('site.pages.landing.index', compact('sliders','miniApps','datingZones','liveZones', 'mallProducts','seo'));
+        return view('site.pages.landing.index', compact('sliders', 'miniApps', 'datingZones', 'liveZones', 'mallProducts', 'seo'));
     }
 }
