@@ -18,13 +18,13 @@ class LandingPageController extends Controller
     public function index()
     {
         $seo = PageSeo::find(1);
-        if (Carbon::parse($seo?->last_map)->format('Y-m-d') != Carbon::now()->format('Y-m-d')) {
-            $this->sitemapGen->generate();
-            if ($seo != null) {
-                $seo->last_map = Carbon::now()->format('Y-m-d');
-                $seo->save();
-            }
-        }
+        // if (Carbon::parse($seo?->last_map)->format('Y-m-d') != Carbon::now()->format('Y-m-d')) {
+        //     $this->sitemapGen->generate();
+        //     if ($seo != null) {
+        //         $seo->last_map = Carbon::now()->format('Y-m-d');
+        //         $seo->save();
+        //     }
+        // }
         $sliders = Slider::latest()->get();
         $miniApps = MiniApp::latest()->get();
         $datingZones = DatingZone::latest()->get();
