@@ -1,9 +1,9 @@
 <style>
     .grid-row-5 {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 8px;
-        padding: 0 10px;
+        grid-template-columns: repeat(4, 1fr);
+        /* gap: 8px; */
+        /* padding: 0 10px; */
     }
 
     .app-card {
