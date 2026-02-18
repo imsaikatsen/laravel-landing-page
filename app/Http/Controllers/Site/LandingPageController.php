@@ -20,6 +20,10 @@ class LandingPageController extends Controller
         $seo = PageSeo::find(1);
         if (Carbon::parse($seo?->last_map)->format('Y-m-d') != Carbon::now()->format('Y-m-d')) {
             $this->sitemapGen->generate();
+            if ($seo != null) {
+                $seo->last_map = Carbon::now()->format('Y-m-d');
+                $seo->save();
+            }
         }
         $sliders = Slider::latest()->get();
         $miniApps = MiniApp::latest()->get();
