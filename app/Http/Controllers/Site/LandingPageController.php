@@ -17,7 +17,7 @@ class LandingPageController extends Controller
     public function __construct(private SitemapGenerator $sitemapGen) {}
     public function index()
     {
-        $seo = PageSeo::find(1);
+        $seo = PageSeo::first();
         // if (Carbon::parse($seo?->last_map)->format('Y-m-d') != Carbon::now()->format('Y-m-d')) {
         //     $this->sitemapGen->generate();
         //     if ($seo != null) {
