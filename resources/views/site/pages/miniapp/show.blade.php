@@ -1,16 +1,6 @@
 @extends('site.layouts.main-layout')
 
 @section('page')
-
-
-@push('meta')
-    <title>吴梦梦电视剧在线观看|{{ $app->metaTitle }}</title>
-    <meta name="title" content="{{ $app->metaTitle }}">
-    <meta name="keywords" content="{{ $app->metaKeywords }}">
-    <meta name="description" content="{{ $app->metaDescription }}">
-@endpush
-
-
 <style>
     .miniapp-card {
         background: #1a1a1a;
@@ -89,14 +79,14 @@
 
 
         <!-- Image -->
-        <img src="/miniapps/{{ $app->appImage }}" class="miniapp-image" alt="{{ $app->appTitle }}">
+        <img src="/miniapps/{{ $item->appImage }}" class="miniapp-image" alt="{{ $item->appTitle }}">
 
         <!-- Title -->
-        <h4 class="miniapp-title">{{ $app->appTitle }}</h4>
+        <h4 class="miniapp-title">{{ $item->appTitle }}</h4>
 
         <!-- Description -->
         <div class="miniapp-description">
-            {{ $app->description }}
+            {{ $item->description }}
         </div>
 
 
@@ -105,8 +95,8 @@
     </div>
 
     <!-- Inject Custom Script / HTML -->
-    @if($app->customScript)
-        {!! $app->customScript !!}
+    @if($item->customScript)
+        {!! $item->customScript !!}
     @endif
 
 </div>

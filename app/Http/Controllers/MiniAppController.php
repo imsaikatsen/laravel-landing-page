@@ -77,8 +77,8 @@ class MiniAppController extends Controller
 
     public function show($slug)
     {
-        $app = MiniApp::where('slug', $slug)->firstOrFail();
-        return view('site.pages.miniapp.show', compact('app'));
+        $item = MiniApp::where('slug', $slug)->firstOrFail();
+        return view('site.pages.miniapp.show', compact('item'));
     }
 
 
