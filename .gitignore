@@ -23,13 +23,8 @@ Homestead.json
 Homestead.yaml
 Thumbs.db
 
-# Ignore all PNG images
-*.png
-
-# Ignore all JPG images
-*.jpg
-
-# Optional: Ignore JPEG images as well
-*.jpeg
-
-*.webp
+public/datingzones
+public/livezones
+public/mall-products
+public/miniapps
+public/sliders
