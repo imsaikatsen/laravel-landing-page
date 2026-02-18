@@ -1,11 +1,21 @@
 <style>
+    /*
     .grid-row-5 {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        /* gap: 8px; */
-        /* padding: 0 10px; */
+        gap: 8px;
+        padding: 0 10px;
     }
+    */
 
+    .grid-row-5 {
+        display: grid;
+        /* This will automatically wrap 5 image div together in 70 px */
+        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+        gap: 8px;
+        padding: 0 10px;
+    }
+    
     .app-card {
         display: flex;
         flex-direction: column;
