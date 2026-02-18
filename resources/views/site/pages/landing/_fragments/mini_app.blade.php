@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="app-label">
-                        {!! hexEncode($app->appTitle) !!}
+                        {{ $app->appTitle }}
                     </div>
                 </a>
             </div>

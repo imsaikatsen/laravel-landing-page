@@ -77,8 +77,8 @@
 <div class="px-3 py-3 mb-5">
 
     <div class="mall-header mb-2">
-        <span class="mall-title-cn">{!! hexEncode('情趣商城') !!}</span>
-        <span class="mall-title-en">{!! hexEncode('SEX MALL') !!}</span>
+        <span class="mall-title-cn">情趣商城</span>
+        <span class="mall-title-en">SEX MALL</span>
     </div>
 
     <div class="row g-3">
@@ -96,12 +96,12 @@
                         <div class="mall-info">
 
                             <div class="product-name">
-                                {!! hexEncode($prod->title) !!}
+                                {{ $prod->title }}
                             </div>
 
                             <div class="price-row">
-                                <span class="price-tag"> {!! hexEncode('¥') !!} {{ $prod->price }}</span>
-                                <span class="sales-count">{!! hexEncode('Sold') !!} {{ $prod->sold_count }}</span>
+                                <span class="price-tag"> ¥ {{ $prod->price }}</span>
+                                <span class="sales-count">Sold {{ $prod->sold_count }}</span>
                             </div>
 
                             <div class="rating-row d-flex justify-content-between align-items-center">
@@ -126,7 +126,7 @@
                                 </div>
 
                                 <span class="text-secondary small">
-                                     {{ $prod->review_count }} {!! hexEncode('Reviews') !!}
+                                     {{ $prod->review_count }} {{('Reviews')}}
                                 </span>
 
                             </div>

@@ -82,8 +82,8 @@
 <div class="px-3 py-2">
 
     <div class="section-header">
-        <span class="section-title-main">{!! hexEncode('直播专区') !!}</span>
-        <span class="section-title-sub">{!! hexEncode('LIVE ZONE') !!}</span>
+        <span class="section-title-main">直播专区</span>
+        <span class="section-title-sub">LIVE ZONE</span>
     </div>
 
     <div class="row g-2">
@@ -100,7 +100,7 @@
                     </div>
 
                     <div class="zone-title">
-                        {!! hexEncode($zone->title) !!}
+                        {{ $zone->title }}
                     </div>
 
                     <div class="zone-arrow-btn">
