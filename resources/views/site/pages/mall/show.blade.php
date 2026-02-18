@@ -1,16 +1,5 @@
 @extends('site.layouts.main-layout')
-
-
-
 @section('page')
-
-@push('meta')
-    <title>吴梦梦电视剧在线观看|{{ ($product->metaTitle) }}</title>
-    <meta name="title" content="{{ $product->metaTitle }}">
-    <meta name="keywords" content="{{ $product->metaKeywords }}">
-    <meta name="description" content="{{ $product->metaDescription }}">
-@endpush
-
 <style>
     .product-detail-card {
         background-color: #1a1a1a;
@@ -99,22 +88,22 @@
     <div class="product-detail-card text-white">
 
         <div class="product-title">
-            {{ $product->title }}
+            {{ $app->title }}
         </div>
 
-        @if($product->image)
-            <img src="/mall-products/{{ $product->image }}" alt="{{ $product->title }}">
+        @if($app->image)
+            <img src="/mall-products/{{ $app->image }}" alt="{{ $app->title }}">
         @endif
 
         <div class="product-badges">
-            <span class="price-badge">¥ {{ $product->price }}</span>
-            <span class="sold-badge">Sold {{ $product->sold_count }}</span>
+            <span class="price-badge">¥ {{ $app->price }}</span>
+            <span class="sold-badge">Sold {{ $app->sold_count }}</span>
         </div>
 
         <div class="rating-stars mb-3">
             @php
-                $fullStars = floor($product->rating);
-                $halfStar = $product->rating - $fullStars >= 0.5;
+                $fullStars = floor($app->rating);
+                $halfStar = $app->rating - $fullStars >= 0.5;
             @endphp
 
             @for ($i = 1; $i <= $fullStars; $i++)
@@ -129,15 +118,15 @@
                 <i class="fa-regular fa-star"></i>
             @endfor
 
-            <span class="text-secondary small"> ({{ $product->review_count . ' Reviews' }})</span>
+            <span class="text-secondary small"> ({{ $app->review_count . ' Reviews' }})</span>
         </div>
 
         <div class="product-description">
-            {{ $product->description }}
+            {{ $app->description }}
         </div>
 
-        @if($product->customScript)
-            {!! $product->customScript !!}
+        @if($app->customScript)
+            {!! $app->customScript !!}
         @endif
 
         <!-- Optional Buy Button -->

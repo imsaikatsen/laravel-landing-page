@@ -65,8 +65,8 @@ class DatingZoneController extends Controller
 
     public function show($slug)
     {
-        $zone = DatingZone::where('slug', $slug)->firstOrFail();
-        return view('site.pages.datingzone.show', compact('zone'));
+        $app = DatingZone::where('slug', $slug)->firstOrFail();
+        return view('site.pages.datingzone.show', compact('app'));
     }
 
 

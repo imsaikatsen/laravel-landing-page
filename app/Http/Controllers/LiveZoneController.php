@@ -82,8 +82,8 @@ class LiveZoneController extends Controller
 
     public function show($slug)
     {
-        $zone = LiveZone::where('slug',$slug)->firstOrFail();
-        return view('site.pages.livezone.show',compact('zone'));
+        $app = LiveZone::where('slug',$slug)->firstOrFail();
+        return view('site.pages.livezone.show',compact('app'));
     }
 
     public function destroy($id)

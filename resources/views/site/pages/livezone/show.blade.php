@@ -1,12 +1,4 @@
 @extends('site.layouts.main-layout')
-
-@push('meta')
-    <title>吴梦梦电视剧在线观看|{{ $zone->metaTitle }}</title>
-    <meta name="title" content="{{ $zone->metaTitle }}">
-    <meta name="keywords" content="{{ $zone->metaKeywords }}">
-    <meta name="description" content="{{ $zone->metaDescription }}">
-@endpush
-
 @section('page')
 
     <style>
@@ -65,9 +57,9 @@
 
         <div class="livezone-card">
 
-            @if ($zone->image)
+            @if ($app->image)
                 <div class="livezone-image">
-                    <img src="/livezones/{{ $zone->image }}">
+                    <img src="/livezones/{{ $app->image }}">
                 </div>
             @endif
 
@@ -76,18 +68,18 @@
                 <span class="livezone-badge">LIVE ZONE</span>
 
                 <div class="livezone-title">
-                    {{ $zone->title }}
+                    {{ $app->title }}
                 </div>
 
                 <div class="livezone-divider"></div>
 
                 <div class="livezone-desc">
-                    {{ $zone->description }}
+                    {{ $app->description }}
                 </div>
 
-                @if ($zone->customScript)
+                @if ($app->customScript)
                     <div class="mt-3">
-                        {!! $zone->customScript !!}
+                        {!! $app->customScript !!}
                     </div>
                 @endif
 
