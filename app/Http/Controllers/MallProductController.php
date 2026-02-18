@@ -90,9 +90,9 @@ class MallProductController extends Controller
 
     public function show($slug)
     {
-        $app = MallProduct::where('slug', $slug)->firstOrFail();
+        $item = MallProduct::where('slug', $slug)->firstOrFail();
 
-        return view('site.pages.mall.show', compact('app'));
+        return view('site.pages.mall.show', compact('item'));
     }
 
 

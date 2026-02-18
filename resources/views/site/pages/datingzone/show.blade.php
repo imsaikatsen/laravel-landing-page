@@ -4,23 +4,23 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow-sm mb-4">
-                @if($app->image)
-                <img src="{{ asset('datingzones/'.$app->image) }}" class="card-img-top" alt="{{ $app->title }}">
+                @if($item->image)
+                <img src="{{ asset('datingzones/'.$item->image) }}" class="card-img-top" alt="{{ $item->title }}">
                 @endif
                 <div class="card-body">
-                    <h2 class="card-title">{{ $app->title }}</h2>
+                    <h2 class="card-title">{{ $item->title }}</h2>
                     <div class="mb-2">
-                        <span class="badge bg-success"> {{('Likes: ') }} {{ $app->count }}</span>
-                        <span class="badge bg-secondary">{{ $app->tag1 }}</span>
-                        <span class="badge bg-secondary">{{ $app->tag2 }}</span>
+                        <span class="badge bg-success"> {{('Likes: ') }} {{ $item->count }}</span>
+                        <span class="badge bg-secondary">{{ $item->tag1 }}</span>
+                        <span class="badge bg-secondary">{{ $item->tag2 }}</span>
                     </div>
 
-                    <p class="card-text">{{ $app->description }}</p>
+                    <p class="card-text">{{ $item->description }}</p>
                 </div>
             </div>
 
-            @if($app->customScript)
-                {!! $app->customScript !!}
+            @if($item->customScript)
+                {!! $item->customScript !!}
             @endif
             
         </div>

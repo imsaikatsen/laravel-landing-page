@@ -88,22 +88,22 @@
     <div class="product-detail-card text-white">
 
         <div class="product-title">
-            {{ $app->title }}
+            {{ $item->title }}
         </div>
 
-        @if($app->image)
-            <img src="/mall-products/{{ $app->image }}" alt="{{ $app->title }}">
+        @if($item->image)
+            <img src="/mall-products/{{ $item->image }}" alt="{{ $item->title }}">
         @endif
 
         <div class="product-badges">
-            <span class="price-badge">¥ {{ $app->price }}</span>
-            <span class="sold-badge">Sold {{ $app->sold_count }}</span>
+            <span class="price-badge">¥ {{ $item->price }}</span>
+            <span class="sold-badge">Sold {{ $item->sold_count }}</span>
         </div>
 
         <div class="rating-stars mb-3">
             @php
-                $fullStars = floor($app->rating);
-                $halfStar = $app->rating - $fullStars >= 0.5;
+                $fullStars = floor($item->rating);
+                $halfStar = $item->rating - $fullStars >= 0.5;
             @endphp
 
             @for ($i = 1; $i <= $fullStars; $i++)
@@ -118,15 +118,15 @@
                 <i class="fa-regular fa-star"></i>
             @endfor
 
-            <span class="text-secondary small"> ({{ $app->review_count . ' Reviews' }})</span>
+            <span class="text-secondary small"> ({{ $item->review_count . ' Reviews' }})</span>
         </div>
 
         <div class="product-description">
-            {{ $app->description }}
+            {{ $item->description }}
         </div>
 
-        @if($app->customScript)
-            {!! $app->customScript !!}
+        @if($item->customScript)
+            {!! $item->customScript !!}
         @endif
 
         <!-- Optional Buy Button -->

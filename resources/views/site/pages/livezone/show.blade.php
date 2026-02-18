@@ -57,9 +57,9 @@
 
         <div class="livezone-card">
 
-            @if ($app->image)
+            @if ($item->image)
                 <div class="livezone-image">
-                    <img src="/livezones/{{ $app->image }}">
+                    <img src="/livezones/{{ $item->image }}">
                 </div>
             @endif
 
@@ -68,18 +68,18 @@
                 <span class="livezone-badge">LIVE ZONE</span>
 
                 <div class="livezone-title">
-                    {{ $app->title }}
+                    {{ $item->title }}
                 </div>
 
                 <div class="livezone-divider"></div>
 
                 <div class="livezone-desc">
-                    {{ $app->description }}
+                    {{ $item->description }}
                 </div>
 
-                @if ($app->customScript)
+                @if ($item->customScript)
                     <div class="mt-3">
-                        {!! $app->customScript !!}
+                        {!! $item->customScript !!}
                     </div>
                 @endif
 
