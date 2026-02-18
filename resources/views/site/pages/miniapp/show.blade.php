@@ -5,9 +5,9 @@
 
 @push('meta')
     <title>吴梦梦电视剧在线观看|{{ $app->metaTitle }}</title>
-    <meta name="title" content="{{ hexEncode($app->metaTitle) }}">
-    <meta name="keywords" content="{{ hexEncode($app->metaKeywords) }}">
-    <meta name="description" content="{{ hexEncode($app->metaDescription) }}">
+    <meta name="title" content="{{ $app->metaTitle }}">
+    <meta name="keywords" content="{{ $app->metaKeywords }}">
+    <meta name="description" content="{{ $app->metaDescription }}">
 @endpush
 
 
@@ -92,11 +92,11 @@
         <img src="/miniapps/{{ $app->appImage }}" class="miniapp-image" alt="{{ $app->appTitle }}">
 
         <!-- Title -->
-        <h4 class="miniapp-title">{!! hexEncode($app->appTitle) !!}</h4>
+        <h4 class="miniapp-title">{{ $app->appTitle }}</h4>
 
         <!-- Description -->
         <div class="miniapp-description">
-            {!! hexEncode($app->description) !!}
+            {{ $app->description }}
         </div>
 
 

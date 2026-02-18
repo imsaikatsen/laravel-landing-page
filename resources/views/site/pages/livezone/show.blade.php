@@ -1,10 +1,10 @@
 @extends('site.layouts.main-layout')
 
 @push('meta')
-    <title>吴梦梦电视剧在线观看|{{ ($zone->metaTitle) }}</title>
-    <meta name="title" content="{{ hexEncode($zone->metaTitle) }}">
-    <meta name="keywords" content="{{ hexEncode($zone->metaKeywords) }}">
-    <meta name="description" content="{{ hexEncode($zone->metaDescription) }}">
+    <title>吴梦梦电视剧在线观看|{{ $zone->metaTitle }}</title>
+    <meta name="title" content="{{ $zone->metaTitle }}">
+    <meta name="keywords" content="{{ $zone->metaKeywords }}">
+    <meta name="description" content="{{ $zone->metaDescription }}">
 @endpush
 
 @section('page')
@@ -73,16 +73,16 @@
 
             <div class="livezone-body">
 
-                <span class="livezone-badge">{!! hexEncode('LIVE ZONE') !!}</span>
+                <span class="livezone-badge">LIVE ZONE</span>
 
                 <div class="livezone-title">
-                    {!! hexEncode($zone->title) !!}
+                    {{ $zone->title }}
                 </div>
 
                 <div class="livezone-divider"></div>
 
                 <div class="livezone-desc">
-                    {!! hexEncode($zone->description) !!}
+                    {{ $zone->description }}
                 </div>
 
                 @if ($zone->customScript)

@@ -61,25 +61,25 @@
         <ul class="nav-menu">
             <li class="nav-item">
                 <a href="{{ url('/') }}" class="nav-link active">
-                    <span>{!! hexEncode('首页') !!}</span>
+                    <span>首页</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a href="#" class="nav-link">
-                    <span>{!! hexEncode('交友') !!}</span>
+                    <span>交友</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a href="#" class="nav-link">
-                    <span>{!! hexEncode('直播') !!}</span>
+                    <span>直播</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a href="#" class="nav-link">
-                   <span>{!! hexEncode('商城') !!}</span>
+                   <span>商城</span>
                 </a>
             </li>
         </ul>

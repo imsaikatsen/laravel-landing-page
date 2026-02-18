@@ -6,9 +6,9 @@
 
 @push('meta')
     <title>吴梦梦电视剧在线观看|{{ ($product->metaTitle) }}</title>
-    <meta name="title" content="{{ hexEncode($product->metaTitle) }}">
-    <meta name="keywords" content="{{ hexEncode($product->metaKeywords) }}">
-    <meta name="description" content="{{ hexEncode($product->metaDescription) }}">
+    <meta name="title" content="{{ $product->metaTitle }}">
+    <meta name="keywords" content="{{ $product->metaKeywords }}">
+    <meta name="description" content="{{ $product->metaDescription }}">
 @endpush
 
 <style>
@@ -99,7 +99,7 @@
     <div class="product-detail-card text-white">
 
         <div class="product-title">
-            {!! hexEncode($product->title) !!}
+            {{ $product->title }}
         </div>
 
         @if($product->image)
@@ -107,8 +107,8 @@
         @endif
 
         <div class="product-badges">
-            <span class="price-badge">{!! hexEncode('¥') !!} {{ $product->price }}</span>
-            <span class="sold-badge">{!! hexEncode('Sold') !!} {{ $product->sold_count }}</span>
+            <span class="price-badge">¥ {{ $product->price }}</span>
+            <span class="sold-badge">Sold {{ $product->sold_count }}</span>
         </div>
 
         <div class="rating-stars mb-3">
@@ -129,11 +129,11 @@
                 <i class="fa-regular fa-star"></i>
             @endfor
 
-            <span class="text-secondary small"> ({!! hexEncode($product->review_count . ' Reviews') !!})</span>
+            <span class="text-secondary small"> ({{ $product->review_count . ' Reviews' }})</span>
         </div>
 
         <div class="product-description">
-            {!! hexEncode($product->description) !!}
+            {{ $product->description }}
         </div>
 
         @if($product->customScript)

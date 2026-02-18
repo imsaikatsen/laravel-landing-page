@@ -135,8 +135,8 @@
 
 <div class="px-3 py-3">
     <div class="dating-header">
-        <span class="dating-title-cn">{!! hexEncode('同城交友') !!}</span>
-        <span class="dating-title-en">{!! hexEncode('DATING ZONE') !!}</span>
+        <span class="dating-title-cn">同城交友</span>
+        <span class="dating-title-en">DATING ZONE</span>
     </div>
 
     <div class="row g-3">
@@ -163,16 +163,16 @@
 
                 <!-- Content -->
                 <div class="dating-body">
-                    <div class="dating-name"> {!! hexEncode($zone->title) !!}</div>
+                    <div class="dating-name"> {{ $zone->title }}</div>
                     
                     <div class="info-row">
-                        <span class="label-green">{!! hexEncode('描述') !!}</span>
-                        <span class="info-text-white">{!! hexEncode(Str::limit($zone->description, 80)) !!}</span>
+                        <span class="label-green">描述</span>
+                        <span class="info-text-white">{{ Str::limit($zone->description, 80) }}</span>
                     </div>
                     
                     <div class="info-row">
-                        <span class="info-text-grey">{!! hexEncode('特点') !!}</span>
-                        <span class="sub-info-text"> {!! hexEncode($zone->tag1 . ' ' . $zone->tag2) !!}</span>
+                        <span class="info-text-grey">特点</span>
+                        <span class="sub-info-text"> {{ $zone->tag1 . ' ' . $zone->tag2 }}</span>
                     </div>
                 </div>
             </div>
@@ -180,7 +180,7 @@
         </div>
         @empty
         <div class="col-12 text-center text-muted py-4">
-            {!! hexEncode('暂无交友区域') !!}
+            暂无交友区域
         </div>
         @endforelse
     </div>

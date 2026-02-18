@@ -4,9 +4,9 @@
 
 @push('meta')
     <title>吴梦梦电视剧在线观看</title>
-    <meta name="title" content="{{ isset($seo->meta_title) ? hexEncode($seo->meta_title) : hexEncode('Default Meta Title') }}">
-    <meta name="keywords" content="{{ isset($seo->meta_keywords) ? hexEncode($seo->meta_keywords) : hexEncode('default, keywords') }}">
-    <meta name="description" content="{{ isset($seo->meta_description) ? hexEncode($seo->meta_description) : hexEncode('Default description') }}">
+    <meta name="title" content="{{ isset($seo->meta_title) ? $seo->meta_title : 'Default Meta Title' }}">
+    <meta name="keywords" content="{{ isset($seo->meta_keywords) ? $seo->meta_keywords : 'default, keywords' }}">
+    <meta name="description" content="{{ isset($seo->meta_description) ? $seo->meta_description : 'Default description' }}">
 @endpush
 
 <style>

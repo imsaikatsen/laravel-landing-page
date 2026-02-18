@@ -4,9 +4,9 @@
 
 @push('meta')
     <title>吴梦梦电视剧在线观看|{{ ($zone->metaTitle) }}</title>
-    <meta name="title" content="{{ hexEncode($zone->metaTitle) }}">
-    <meta name="keywords" content="{{ hexEncode($zone->metaKeywords) }}">
-    <meta name="description" content="{{ hexEncode($zone->metaDescription) }}">
+    <meta name="title" content="{{ $zone->metaTitle }}">
+    <meta name="keywords" content="{{ $zone->metaKeywords }}">
+    <meta name="description" content="{{ $zone->metaDescription }}">
 @endpush
 
 <div class="container py-4">
@@ -20,15 +20,15 @@
                 @endif
 
                 <div class="card-body">
-                    <h2 class="card-title">{!! hexEncode($zone->title) !!}</h2>
+                    <h2 class="card-title">{{ $zone->title }}</h2>
 
                     <div class="mb-2">
-                        <span class="badge bg-success"> {!! hexEncode('Likes: ') !!} {{ $zone->count }}</span>
-                        <span class="badge bg-secondary">{!! hexEncode($zone->tag1) !!}</span>
-                        <span class="badge bg-secondary">{!! hexEncode($zone->tag2) !!}</span>
+                        <span class="badge bg-success"> {{('Likes: ') }} {{ $zone->count }}</span>
+                        <span class="badge bg-secondary">{{ $zone->tag1 }}</span>
+                        <span class="badge bg-secondary">{{ $zone->tag2 }}</span>
                     </div>
 
-                    <p class="card-text">{!! hexEncode($zone->description) !!}</p>
+                    <p class="card-text">{{ $zone->description }}</p>
                 </div>
             </div>
 
