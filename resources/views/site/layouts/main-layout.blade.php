@@ -8,11 +8,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 @if(isset($seo) && $seo != null)
-    <!-- <meta name="title" content="吴梦梦电视剧在线观看"> -->
-    <meta name="title" content="吴梦梦电视剧在线观看 | {{ $seo?->meta_title ?? 'Default Meta Title' }}">
+    <meta name="title" content="吴梦梦电视剧在线观看">
     <meta name="keywords" content="{{ $seo?->meta_keywords ?? 'default, keywords' }}">
     <meta name="description" content="{{ $seo?->meta_description ?? 'Default description' }}">
-        {!! $seo->customScript !!}
+    {!! $seo->customScript !!}
 @endif
 
 @if(isset($item) && $item != null)
