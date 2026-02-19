@@ -30,6 +30,6 @@ class LandingPageController extends Controller
         $datingZones = DatingZone::latest()->get();
         $liveZones = LiveZone::latest()->get();
         $mallProducts = MallProduct::latest()->get();
-        return view('site.pages.landing.index', compact('sliders', 'miniApps', 'datingZones', 'liveZones', 'mallProducts', 'seo'));
+        return view('site.pages.landing.index', compact('sliders', 'miniApps', 'datingZones', 'liveZones', 'mallProducts'));
     }
 }

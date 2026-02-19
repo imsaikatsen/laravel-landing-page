@@ -21,5 +21,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        View::composer('site.includes.header', function ($view) {
+            $menus = DynMainMenu::with(['subMenus'])->where([['location', '=', 'Main Menu']])->get();
+            $view->with('menus', $menus);
+        });
     }
 }

@@ -3,10 +3,10 @@
 @section('content')
 <div class="stat-card p-4">
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    {{-- <div class="d-flex justify-content-between align-items-center mb-4">
         <h5 class="mb-0">Page SEO</h5>
         <a href="{{ route('pageseo.create') }}" class="btn btn-success">+ Add Page SEO</a>
-    </div>
+    </div> --}}
 
     <div class="table-responsive shadow-sm rounded bg-dark p-3">
         <table class="table table-striped table-hover text-white align-middle">
@@ -35,14 +35,6 @@
                             <a href="{{ route('pageseo.edit', $p->id) }}" class="btn btn-sm btn-warning" title="Edit SEO">
                                 <i class="fa fa-edit"></i>
                             </a>
-
-                            <form id="delete-form-{{ $p->id }}" method="POST" action="{{ route('pageseo.destroy', $p->id) }}" class="d-inline-block">
-                                @csrf
-                                @method('DELETE')
-                                <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $p->id }})" title="Delete SEO">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                            </form>
                         </div>
                     </td>
                 </tr>
