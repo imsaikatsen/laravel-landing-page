@@ -118,7 +118,7 @@ Route::prefix('admin')->group(function () {
             Route::post('/datingzone/store', [DatingZoneController::class, 'store'])->name('datingzone.store');
             Route::get('/datingzone/{id}/edit', [DatingZoneController::class, 'edit'])->name('datingzone.edit');
             Route::post('/datingzone/{id}/update', [DatingZoneController::class, 'update'])->name('datingzone.update');
-            Route::post('/datingzone/{id}/delete', [DatingZoneController::class, 'destroy'])->name('datingzone.destroy');
+            Route::delete('/datingzone/{id}/delete', [DatingZoneController::class, 'destroy'])->name('datingzone.destroy');
         });
 
         // Route::get('/datingzone/{slug}', [DatingZoneController::class, 'show'])->name('datingzone.show');

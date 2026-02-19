@@ -40,11 +40,18 @@
                     <td>
                         <a href="{{ route('datingzone.edit', $zone->id) }}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
 
-                        <form action="{{ route('datingzone.destroy', $zone->id) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                        {{-- <form action="{{ route('datingzone.destroy', $zone->id) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure you want to delete this item?');">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-sm btn-danger"> <i class="fa fa-trash"></i></button>
-                        </form>
+                        </form> --}}
+                        <form id="delete-form-{{ $zone->id }}" action="{{ route('datingzone.destroy', $zone->id) }}" method="POST" class="d-inline-block">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $zone->id }})">
+                                     <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
                     </td>
                 </tr>
                 @empty
@@ -56,4 +63,23 @@
         </table>
     </div>
 </div>
+<!-- SWEETALERT SCRIPT -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#ff4444',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + id).submit();
+            }
+        })
+    }
+</script>
 @endsection

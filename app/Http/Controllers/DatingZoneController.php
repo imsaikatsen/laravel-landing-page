@@ -73,7 +73,9 @@ class DatingZoneController extends Controller
     public function destroy($id)
     {
         $zone = DatingZone::findOrFail($id);
-        unlink(public_path('datingzones/' . $zone->image));
+        if($zone->image && file_exists(public_path('datingzones/'.$zone->image))){
+            unlink(public_path('livezones/'.$zone->image));
+        }
         $zone->delete();
 
         return back();
