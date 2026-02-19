@@ -80,7 +80,7 @@ class SitemapGenerator
             ->each(function ($item) use (&$items, $base) {
                 $items[] = [
                     'loc'      => $base . '/吴萌萌/' . $item->slug,
-                    'lastmod'  => Carbon::parse($item->updated_at)->format('Y-m-d'),
+                    'lastmod'  => Carbon::now()->format('Y-m-d'),
                     'priority' => '0.8',
                 ];
             })->toArray();
