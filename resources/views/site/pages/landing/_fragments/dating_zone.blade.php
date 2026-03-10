@@ -32,7 +32,7 @@
                     
                     <div class="info-row">
                         <span class="label-green">描述</span>
-                        <span class="info-text-white">{{ Str::limit($zone->description, 80) }}</span>
+                        <span class="info-text-white">{{ Str::limit(strip_tags($zone->description), 80) }}</span>
                     </div>
                     
                     <div class="info-row">
@@ -50,4 +50,3 @@
         @endforelse
     </div>
 </div>
-

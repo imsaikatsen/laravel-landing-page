@@ -56,7 +56,12 @@ class MiniAppController extends Controller
         $app = MiniApp::findOrFail($id);
 
         if ($request->hasFile('appImage')) {
-            unlink(public_path('miniapps/' . $app->appImage));
+            $existingImagePath = public_path('miniapps/' . $app->appImage);
+
+            if ($app->appImage && file_exists($existingImagePath)) {
+                unlink($existingImagePath);
+            }
+
             $imageName = time() . '.' . $request->appImage->extension();
             $request->appImage->move(public_path('miniapps'), $imageName);
             $app->appImage = $imageName;
@@ -85,7 +90,12 @@ class MiniAppController extends Controller
     public function destroy($id)
     {
         $app = MiniApp::findOrFail($id);
-        unlink(public_path('miniapps/' . $app->appImage));
+        $imagePath = public_path('miniapps/' . $app->appImage);
+
+        if ($app->appImage && file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+
         $app->delete();
 
         return back()->with('success', 'Deleted');

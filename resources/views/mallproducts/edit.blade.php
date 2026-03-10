@@ -79,7 +79,7 @@
             <!-- Description -->
             <div class="col-12">
                 <label class="form-label">Description</label>
-                <textarea class="form-control" name="description" rows="3" required>{{ $product->description }}</textarea>
+                <textarea class="form-control summernote-editor" name="description" rows="3" required>{{ $product->description }}</textarea>
                 <div class="invalid-feedback">Please enter a description.</div>
             </div>
 
@@ -129,4 +129,3 @@
     })()
 </script>
 @endsection
-

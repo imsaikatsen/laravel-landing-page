@@ -15,7 +15,7 @@
                         <span class="badge bg-secondary">{{ $item->tag2 }}</span>
                     </div>
 
-                    <p class="card-text">{{ $item->description }}</p>
+                    <div class="card-text">{!! $item->description !!}</div>
                 </div>
             </div>
 

@@ -142,7 +142,17 @@
                 margin-right: 0;
             }
         }
+
+        .note-editor.note-frame {
+            border: 1px solid #ced4da;
+        }
+
+        .note-editable {
+            min-height: 220px;
+        }
     </style>
+    <link href="{{ asset('css/summernote-bs5.min.css') }}" rel="stylesheet">
+    @stack('styles')
 
     <div class="container-fluid p-0">
         <div class="d-flex">
@@ -180,6 +190,74 @@
                 </div>
             </div>
         </div>
+        <script src="{{ asset('js/jquery-3.7.1.min.js')}}"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="{{ asset('js/summernote-bs5.min.js') }}"></script>
+        <script>
+            $(function () {
+                $('.summernote-editor').summernote({
+                    height: 260,
+                    placeholder: 'Write content here...',
+                    icons: {
+                        align: '<i class="fa-solid fa-align-left"></i>',
+                        alignCenter: '<i class="fa-solid fa-align-center"></i>',
+                        alignJustify: '<i class="fa-solid fa-align-justify"></i>',
+                        alignLeft: '<i class="fa-solid fa-align-left"></i>',
+                        alignRight: '<i class="fa-solid fa-align-right"></i>',
+                        rowBelow: '<i class="fa-solid fa-row"></i>',
+                        colBefore: '<i class="fa-solid fa-table-columns"></i>',
+                        colAfter: '<i class="fa-solid fa-table-columns"></i>',
+                        colRemove: '<i class="fa-solid fa-trash"></i>',
+                        rowAbove: '<i class="fa-solid fa-row"></i>',
+                        rowRemove: '<i class="fa-solid fa-trash"></i>',
+                        indent: '<i class="fa-solid fa-indent"></i>',
+                        outdent: '<i class="fa-solid fa-outdent"></i>',
+                        arrowsAlt: '<i class="fa-solid fa-expand"></i>',
+                        bold: '<i class="fa-solid fa-bold"></i>',
+                        caret: '<i class="fa-solid fa-caret-down"></i>',
+                        circle: '<i class="fa-regular fa-circle"></i>',
+                        close: '<i class="fa-solid fa-xmark"></i>',
+                        code: '<i class="fa-solid fa-code"></i>',
+                        eraser: '<i class="fa-solid fa-eraser"></i>',
+                        font: '<i class="fa-solid fa-font"></i>',
+                        frame: '<i class="fa-regular fa-square"></i>',
+                        italic: '<i class="fa-solid fa-italic"></i>',
+                        link: '<i class="fa-solid fa-link"></i>',
+                        unlink: '<i class="fa-solid fa-link-slash"></i>',
+                        magic: '<i class="fa-solid fa-wand-magic-sparkles"></i>',
+                        menuCheck: '<i class="fa-solid fa-check"></i>',
+                        minus: '<i class="fa-solid fa-minus"></i>',
+                        orderedlist: '<i class="fa-solid fa-list-ol"></i>',
+                        pencil: '<i class="fa-solid fa-pen"></i>',
+                        picture: '<i class="fa-regular fa-image"></i>',
+                        question: '<i class="fa-regular fa-circle-question"></i>',
+                        redo: '<i class="fa-solid fa-rotate-right"></i>',
+                        rollback: '<i class="fa-solid fa-rotate-left"></i>',
+                        square: '<i class="fa-regular fa-square"></i>',
+                        strikethrough: '<i class="fa-solid fa-strikethrough"></i>',
+                        subscript: '<i class="fa-solid fa-subscript"></i>',
+                        superscript: '<i class="fa-solid fa-superscript"></i>',
+                        table: '<i class="fa-solid fa-table"></i>',
+                        textHeight: '<i class="fa-solid fa-text-height"></i>',
+                        trash: '<i class="fa-solid fa-trash"></i>',
+                        underline: '<i class="fa-solid fa-underline"></i>',
+                        undo: '<i class="fa-solid fa-rotate-left"></i>',
+                        unorderedlist: '<i class="fa-solid fa-list-ul"></i>',
+                        video: '<i class="fa-solid fa-video"></i>'
+                    },
+                    toolbar: [
+                        ['style', ['style']],
+                        ['font', ['bold', 'italic', 'underline', 'clear']],
+                        ['fontname', ['fontname']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture', 'video']],
+                        ['view', ['fullscreen', 'codeview']]
+                    ]
+                });
+            });
+        </script>
+        @stack('scripts')
     </div>
 </x-app-layout>

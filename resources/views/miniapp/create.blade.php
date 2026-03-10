@@ -29,9 +29,9 @@
                     value="{{ old('appTitle') }}">
             </div>
 
-             <div class="mb-3">
+            <div class="mb-3">
                 <label class="form-label">App Content</label>
-                <textarea name="description" class="form-control mb-2" placeholder="Description">{{ old('description') }}</textarea>
+                <textarea name="description" class="form-control summernote-editor">{{ old('description') }}</textarea>
             </div>
 
             <div class="mb-3">

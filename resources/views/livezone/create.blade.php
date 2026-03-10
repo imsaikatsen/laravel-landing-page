@@ -33,7 +33,7 @@
 
                 <div class="col-12 mb-3">
                     <label>Description</label>
-                    <textarea name="description" rows="4" class="form-control" required></textarea>
+                    <textarea name="description" rows="4" class="form-control summernote-editor" required></textarea>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label>Meta Keywords</label>
@@ -62,9 +62,6 @@
             <a href="{{ route('livezone.index') }}" class="btn btn-secondary mt-2">Back</a>
         </form>
     </div>
-
-    <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
-
     <!-- Frontend Validation Script -->
     <script>
         (function () {

@@ -35,7 +35,7 @@
 
                 <div class="col-12 mb-3">
                     <label>Description</label>
-                    <textarea name="description" rows="4" class="form-control" required>{{ $zone->description }}</textarea>
+                    <textarea name="description" rows="4" class="form-control summernote-editor" required>{{ $zone->description }}</textarea>
                 </div>
 
 
@@ -67,10 +67,6 @@
         </form>
 
     </div>
-
-
-    <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
-
     <script>
     $('#imageInput').on('change', function() {
         const file = this.files[0];
