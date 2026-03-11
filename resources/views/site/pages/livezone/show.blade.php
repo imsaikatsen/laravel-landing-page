@@ -74,7 +74,7 @@
                 <div class="livezone-divider"></div>
 
                 <div class="livezone-desc">
-                    {{ $item->description }}
+                    {!! $item->description !!}
                 </div>
 
                 @if ($item->customScript)

@@ -26,10 +26,10 @@ class LandingPageController extends Controller
             }
         }
         $sliders = Slider::latest()->get();
-        $miniApps = MiniApp::latest()->get();
-        $datingZones = DatingZone::latest()->get();
-        $liveZones = LiveZone::latest()->get();
-        $mallProducts = MallProduct::latest()->get();
+        $miniApps = MiniApp::with('category')->latest()->get();
+        $datingZones = DatingZone::with('category')->latest()->get();
+        $liveZones = LiveZone::with('category')->latest()->get();
+        $mallProducts = MallProduct::with('category')->latest()->get();
         return view('site.pages.landing.index', compact('sliders', 'miniApps', 'datingZones', 'liveZones', 'mallProducts'));
     }
 }

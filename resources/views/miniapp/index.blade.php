@@ -12,6 +12,7 @@
             <thead class="table-dark">
                 <tr>
                     <th>#</th>
+                    <th>Category</th>
                     <th>Icon</th>
                     <th>Title</th>
                     <th>Description</th>
@@ -22,6 +23,7 @@
                 @forelse($apps as $k => $app)
                 <tr>
                     <td>{{ $k + 1 }}</td>
+                    <td>{{ $app->category?->name ?? 'No category selected' }}</td>
                     <td>
                         @if($app->appImage)
                             <img src="/miniapps/{{ $app->appImage }}" width="50" class="rounded shadow-sm">
@@ -49,7 +51,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="5" class="text-center text-muted">No Mini Apps Found</td>
+                    <td colspan="6" class="text-center text-muted">No Mini Apps Found</td>
                 </tr>
                 @endforelse
             </tbody>
@@ -77,4 +79,3 @@
     }
 </script>
 @endsection
-

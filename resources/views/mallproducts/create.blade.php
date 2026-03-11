@@ -30,6 +30,24 @@
         @csrf
 
         <div class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Category</label>
+                <select name="category_id" class="form-control">
+                    <option value="">Select Category</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="col-md-6 d-flex align-items-end">
+                <div class="form-check form-switch mb-2">
+                    <input class="form-check-input" type="checkbox" role="switch" id="mall-category-active"
+                        name="category_active" value="1" @checked(old('category_active'))>
+                    <label class="form-check-label" for="mall-category-active">Category Active</label>
+                </div>
+            </div>
+
             <!-- Product Title -->
             <div class="col-md-6">
                 <label class="form-label">Product Title</label>
@@ -75,7 +93,7 @@
             <!-- Description -->
             <div class="col-12">
                 <label class="form-label">Description</label>
-                <textarea class="form-control" name="description" rows="3" placeholder="Enter Description" required></textarea>
+                <textarea class="form-control summernote-editor" name="description" rows="3" placeholder="Enter Description" required></textarea>
                 <div class="invalid-feedback">Please enter a description.</div>
             </div>
 

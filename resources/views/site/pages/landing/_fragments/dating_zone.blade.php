@@ -7,7 +7,7 @@
     <div class="row g-3">
         @forelse($datingZones as $zone)
         <div class="col-6 col-md-6 col-lg-6">
-        <a href="{{ route('slug.resolve', $zone->slug) }}" class="text-decoration-none">
+        <a href="{{ $zone->category && $zone->category_active ? route('content.show', ['categorySlug' => $zone->category->slug, 'slug' => $zone->slug]) : route('content.show.simple', $zone->slug) }}" class="text-decoration-none">
             <div class="dating-card shadow">
 
                 <!-- Likes Badge -->
@@ -32,7 +32,7 @@
                     
                     <div class="info-row">
                         <span class="label-green">描述</span>
-                        <span class="info-text-white">{{ Str::limit($zone->description, 80) }}</span>
+                        <span class="info-text-white">{{ Str::limit(strip_tags($zone->description), 80) }}</span>
                     </div>
                     
                     <div class="info-row">
@@ -50,4 +50,3 @@
         @endforelse
     </div>
 </div>
-

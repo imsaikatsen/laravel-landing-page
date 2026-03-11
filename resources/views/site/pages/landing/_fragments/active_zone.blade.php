@@ -9,7 +9,7 @@
 
         @forelse($liveZones as $zone)
             <div class="col-6">
-                <a href="{{ route('slug.resolve', $zone->slug) }}" class="zone-card shadow-sm">
+                <a href="{{ $zone->category && $zone->category_active ? route('content.show', ['categorySlug' => $zone->category->slug, 'slug' => $zone->slug]) : route('content.show.simple', $zone->slug) }}" class="zone-card shadow-sm">
                     <div class="zone-image-wrapper">
                         @if ($zone->image)
                             <img src="{{ asset('livezones/' . $zone->image) }}" alt="">
@@ -37,4 +37,3 @@
         @endforelse
     </div>
 </div>
-

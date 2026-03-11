@@ -57,6 +57,29 @@
         font-size: 1.1rem;
     }
 
+    .miniapp-back-btn {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 45px;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+        z-index: 2;
+    }
+
+    .miniapp-back-btn:hover {
+        color: #00ff00;
+        border-color: rgba(0, 255, 0, 0.35);
+    }
+
     /* Optional small info bar below image */
     .miniapp-info-bar {
         display: flex;
@@ -72,6 +95,11 @@
 
     <div class="miniapp-card">
 
+        <a href="{{ url()->previous() !== url()->current() ? url()->previous() : url('/') }}" class="miniapp-back-btn"
+            aria-label="Go back">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+
         <!-- Floating Like Button -->
         <button class="miniapp-like-btn">
             <i class="fa-solid fa-heart"></i>
@@ -86,7 +114,7 @@
 
         <!-- Description -->
         <div class="miniapp-description">
-            {{ $item->description }}
+            {!! $item->description !!}
         </div>
 
 

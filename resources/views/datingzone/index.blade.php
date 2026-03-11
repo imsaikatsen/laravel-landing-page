@@ -13,6 +13,7 @@
                 <tr>
                     <th>#</th>
                     <th>Image</th>
+                    <th>Category</th>
                     <th>Title</th>
                     <th>Description</th>
                     <th>Tag 1</th>
@@ -32,6 +33,7 @@
                             <span class="text-muted">No Image</span>
                         @endif
                     </td>
+                    <td>{{ $zone->category?->name ?? 'No category selected' }}</td>
                     <td>{{ $zone->title }}</td>
                     <td class="text-truncate" style="max-width:200px;">{{ $zone->description }}</td>
                     <td>{{ $zone->tag1 }}</td>
@@ -56,7 +58,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="8" class="text-center text-muted">No Dating Zones Found</td>
+                    <td colspan="9" class="text-center text-muted">No Dating Zones Found</td>
                 </tr>
                 @endforelse
             </tbody>

@@ -9,7 +9,7 @@
 
         @forelse($mallProducts as $prod)
             <div class="col-6 mb-2">
-                <a href="{{ route('slug.resolve', $prod->slug) }}" class="text-decoration-none">
+                <a href="{{ $prod->category && $prod->category_active ? route('content.show', ['categorySlug' => $prod->category->slug, 'slug' => $prod->slug]) : route('content.show.simple', $prod->slug) }}" class="text-decoration-none">
                     <div class="mall-card shadow-sm">
                         <div class="position-relative">
                             @if ($prod->image)

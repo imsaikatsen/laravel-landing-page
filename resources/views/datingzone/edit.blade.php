@@ -7,6 +7,22 @@
     <form method="POST" action="{{ route('datingzone.update',$zone->id) }}" enctype="multipart/form-data">
         @csrf
 
+        <div class="mb-3">
+            <label class="form-label">Category</label>
+            <select name="category_id" class="form-select">
+                <option value="">Select Category</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}" @selected(old('category_id', $zone->category_id) == $category->id)>{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-check form-switch mb-3">
+            <input class="form-check-input" type="checkbox" role="switch" id="dating-category-active"
+                name="category_active" value="1" @checked(old('category_active', $zone->category_active))>
+            <label class="form-check-label" for="dating-category-active">Category Active</label>
+        </div>
+
         <input class="form-control mb-2" name="title" placeholder="Title" value="{{ old('title',$zone->title) }}" required>
 
         <div class="mb-3">
@@ -19,7 +35,7 @@
 
         <div class="mb-3">
             <label class="form-label">Description</label>
-            <textarea name="description" class="form-control" placeholder="Description">{{ old('description',$zone->description) }}</textarea>
+            <textarea name="description" class="form-control summernote-editor" placeholder="Description">{{ old('description',$zone->description) }}</textarea>
         </div>
 
         <div class="mb-3">
