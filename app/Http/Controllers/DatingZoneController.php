@@ -3,24 +3,37 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 use App\Models\DatingZone;
-use Illuminate\Support\Str;
 
 class DatingZoneController extends Controller
 {
     public function index()
     {
-        $zones = DatingZone::latest()->get();
+        $zones = DatingZone::with('category')->latest()->get();
         return view('datingzone.index', compact('zones'));
     }
 
     public function create()
     {
-        return view('datingzone.create');
+        $categories = Category::orderBy('name')->get();
+
+        return view('datingzone.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'image' => 'required|image',
+            'description' => 'required',
+            'category_id' => 'nullable|exists:categories,id',
+            'category_active' => 'nullable|boolean',
+        ]);
+
+        $categoryId = $request->category_id;
+        $categoryActive = $categoryId ? $request->boolean('category_active') : false;
+
         $imageName = time() . '.' . $request->image->extension();
         $request->image->move(public_path('datingzones'), $imageName);
 
@@ -36,6 +49,8 @@ class DatingZoneController extends Controller
             'metaDescription' => $request->metaDescription,
             'customScript' => $request->customScript,
             'image' => $imageName,
+            'category_id' => $categoryId,
+            'category_active' => $categoryActive,
         ]);
 
         return redirect()->route('datingzone.index');
@@ -44,12 +59,25 @@ class DatingZoneController extends Controller
     public function edit($id)
     {
         $zone = DatingZone::findOrFail($id);
-        return view('datingzone.edit', compact('zone'));
+        $categories = Category::orderBy('name')->get();
+
+        return view('datingzone.edit', compact('zone', 'categories'));
     }
 
     public function update(Request $request, $id)
     {
         $zone = DatingZone::findOrFail($id);
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'image' => 'nullable|image',
+            'description' => 'required',
+            'category_id' => 'nullable|exists:categories,id',
+            'category_active' => 'nullable|boolean',
+        ]);
+
+        $categoryId = $request->category_id;
+        $categoryActive = $categoryId ? $request->boolean('category_active') : false;
 
         if ($request->hasFile('image')) {
             unlink(public_path('datingzones/' . $zone->image));
@@ -58,14 +86,27 @@ class DatingZoneController extends Controller
             $zone->image = $imageName;
         }
 
-        $zone->update($request->except('image'));
+        $zone->update([
+            'title' => $request->title,
+            'slug' => generate_slug($request->title),
+            'description' => $request->description,
+            'tag1' => $request->tag1,
+            'tag2' => $request->tag2,
+            'count' => $request->count,
+            'metaKeywords' => $request->metaKeywords,
+            'metaTitle' => $request->metaTitle,
+            'metaDescription' => $request->metaDescription,
+            'customScript' => $request->customScript,
+            'category_id' => $categoryId,
+            'category_active' => $categoryActive,
+        ]);
 
         return redirect()->route('datingzone.index');
     }
 
     public function show($slug)
     {
-        $item = DatingZone::where('slug', $slug)->firstOrFail();
+        $item = DatingZone::with('category')->where('slug', $slug)->firstOrFail();
         return view('site.pages.datingzone.show', compact('item'));
     }
 

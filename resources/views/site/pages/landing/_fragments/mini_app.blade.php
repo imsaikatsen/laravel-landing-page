@@ -5,7 +5,7 @@
     <div class="grid-row-5">
         @foreach ($miniApps as $index => $app)
             <div class="position-relative">
-                <a href="{{ route('slug.resolve', $app->slug) }}" class="app-card">
+                <a href="{{ $app->category && $app->category_active ? route('content.show', ['categorySlug' => $app->category->slug, 'slug' => $app->slug]) : route('content.show.simple', $app->slug) }}" class="app-card">
                     <div class="app-icon-wrapper">
                         <img src="/miniapps/{{ $app->appImage }}" alt="{{ $app->appTitle }}">
                     </div>

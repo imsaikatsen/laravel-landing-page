@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class DatingZone extends Model
 {
@@ -17,7 +18,13 @@ class DatingZone extends Model
     'metaKeywords',
     'metaTitle',
     'metaDescription',
-    'customScript'
+    'customScript',
+    'category_id',
+    'category_active',
 ];
 
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }

@@ -12,6 +12,7 @@
             <thead class="table-dark">
                 <tr>
                     <th>#</th>
+                    <th>Category</th>
                     <th>Title</th>
                     <th>Image</th>
                     <th>Description</th>
@@ -22,6 +23,7 @@
                 @forelse($zones as $zone)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
+                    <td>{{ $zone->category?->name ?? 'No category selected' }}</td>
                     <td>{{ $zone->title }}</td>
                     <td>
                         @if($zone->image)
@@ -47,7 +49,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="5" class="text-center text-muted">No Live Zones Found</td>
+                    <td colspan="6" class="text-center text-muted">No Live Zones Found</td>
                 </tr>
                 @endforelse
             </tbody>
@@ -75,4 +77,3 @@
     }
 </script>
 @endsection
-

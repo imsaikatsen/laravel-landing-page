@@ -25,8 +25,28 @@
             @method('PUT')
 
             <div class="mb-3">
+                <label class="form-label">Category</label>
+                <select name="category_id" class="form-select form-select-lg">
+                    <option value="">Select Category</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}"
+                            @selected(old('category_id', $app->category_id) == $category->id)>
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" role="switch" id="miniapp-category-active"
+                    name="category_active" value="1" @checked(old('category_active', $app->category_active))>
+                <label class="form-check-label" for="miniapp-category-active">Category Active</label>
+            </div>
+
+            <div class="mb-3">
                 <label class="form-label">App Title</label>
-                <input type="text" name="appTitle" class="form-control form-control-lg" value="{{ $app->appTitle }}">
+                <input type="text" name="appTitle" class="form-control form-control-lg"
+                    value="{{ old('appTitle', $app->appTitle) }}">
             </div>
 
             <div class="mb-3">
@@ -44,21 +64,22 @@
 
             <div class="mb-3">
                 <label class="form-label">Meta Keywords</label>
-                <textarea name="metaKeywords" class="form-control">{{ $app->metaKeywords }}</textarea>
+                <textarea name="metaKeywords" class="form-control">{{ old('metaKeywords', $app->metaKeywords) }}</textarea>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Meta Title</label>
-                <input type="text" name="metaTitle" class="form-control form-control-lg" value="{{ $app->metaTitle }}">
+                <input type="text" name="metaTitle" class="form-control form-control-lg"
+                    value="{{ old('metaTitle', $app->metaTitle) }}">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Meta Description</label>
-                <textarea name="metaDescription" class="form-control">{{ $app->metaDescription }}</textarea>
+                <textarea name="metaDescription" class="form-control">{{ old('metaDescription', $app->metaDescription) }}</textarea>
             </div>
             <div class="mb-3">
                 <label class="form-label">Add HTML / JS</label>
-                <textarea name="customScript" class="form-control" placeholder="Custom JS / Script">{{ $app->customScript }}</textarea>
+                <textarea name="customScript" class="form-control" placeholder="Custom JS / Script">{{ old('customScript', $app->customScript) }}</textarea>
             </div>
 
 

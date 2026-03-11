@@ -24,6 +24,24 @@
             @csrf
 
             <div class="mb-3">
+                <label class="form-label">Category</label>
+                <select name="category_id" class="form-select form-select-lg">
+                    <option value="">Select Category</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" role="switch" id="miniapp-category-active"
+                    name="category_active" value="1" @checked(old('category_active'))>
+                <label class="form-check-label" for="miniapp-category-active">Category Active</label>
+            </div>
+
+            <div class="mb-3">
                 <label class="form-label">App Title</label>
                 <input type="text" name="appTitle" class="form-control form-control-lg" placeholder="Enter App Title"
                     value="{{ old('appTitle') }}">

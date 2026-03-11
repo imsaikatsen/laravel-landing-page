@@ -3,20 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 use App\Models\MallProduct;
-use Illuminate\Support\Str;
 
 class MallProductController extends Controller
 {
     public function index()
     {
-        $products = MallProduct::latest()->paginate(20);
+        $products = MallProduct::with('category')->latest()->paginate(20);
         return view('mallproducts.index', compact('products'));
     }
 
     public function create()
     {
-        return view('mallproducts.create');
+        $categories = Category::orderBy('name')->get();
+
+        return view('mallproducts.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -24,9 +26,12 @@ class MallProductController extends Controller
         $request->validate([
             'title' => 'required|unique:mall_products,title',
             'price' => 'required',
+            'category_id' => 'nullable|exists:categories,id',
+            'category_active' => 'nullable|boolean',
         ]);
 
         $data = $request->all();
+        $data['category_active'] = $request->category_id ? $request->boolean('category_active') : false;
 
         // Auto slug
         $slug = generate_slug($request->title);
@@ -49,7 +54,9 @@ class MallProductController extends Controller
     public function edit($id)
     {
         $product = MallProduct::findOrFail($id);
-        return view('mallproducts.edit', compact('product'));
+        $categories = Category::orderBy('name')->get();
+
+        return view('mallproducts.edit', compact('product', 'categories'));
     }
 
 
@@ -60,9 +67,12 @@ class MallProductController extends Controller
 
         $request->validate([
             'title' => 'required|unique:mall_products,title,' . $product->id,
+            'category_id' => 'nullable|exists:categories,id',
+            'category_active' => 'nullable|boolean',
         ]);
 
         $data = $request->all();
+        $data['category_active'] = $request->category_id ? $request->boolean('category_active') : false;
 
         // Auto slug regenerate if title changed
         if ($request->title !== $product->title) {
@@ -90,7 +100,7 @@ class MallProductController extends Controller
 
     public function show($slug)
     {
-        $item = MallProduct::where('slug', $slug)->firstOrFail();
+        $item = MallProduct::with('category')->where('slug', $slug)->firstOrFail();
 
         return view('site.pages.mall.show', compact('item'));
     }

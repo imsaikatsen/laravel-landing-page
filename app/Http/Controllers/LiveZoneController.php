@@ -1,20 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Category;
 use App\Models\LiveZone;
 use Illuminate\Http\Request;
 
 class LiveZoneController extends Controller
 {
-      public function index()
+    public function index()
     {
-        $zones = LiveZone::latest()->get();
+        $zones = LiveZone::with('category')->latest()->get();
         return view('livezone.index', compact('zones'));
     }
 
     public function create()
     {
-        return view('livezone.create');
+        $categories = Category::orderBy('name')->get();
+
+        return view('livezone.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -24,11 +27,14 @@ class LiveZoneController extends Controller
             'slug' => 'required|string|unique:live_zones,slug',
             'description' => 'required',
             'image' => 'nullable|image|max:2048',
+            'category_id' => 'nullable|exists:categories,id',
+            'category_active' => 'nullable|boolean',
         ]);
 
         $data = $request->only([
-            'title', 'slug', 'description', 'tag1', 'tag2', 'count', 'metaKeywords', 'metaTitle', 'metaDescription', 'customScript'
+            'title', 'slug', 'description', 'tag1', 'tag2', 'count', 'metaKeywords', 'metaTitle', 'metaDescription', 'customScript', 'category_id'
         ]);
+        $data['category_active'] = $request->category_id ? $request->boolean('category_active') : false;
 
         $data['slug'] = generate_slug($request->title);
 
@@ -46,7 +52,9 @@ class LiveZoneController extends Controller
     public function edit($id)
     {
         $zone = LiveZone::findOrFail($id);
-        return view('livezone.edit', compact('zone'));
+        $categories = Category::orderBy('name')->get();
+
+        return view('livezone.edit', compact('zone', 'categories'));
     }
 
     public function update(Request $request, $id)
@@ -58,11 +66,14 @@ class LiveZoneController extends Controller
             'slug' => 'required|string|unique:live_zones,slug,'.$zone->id,
             'description' => 'required',
             'image' => 'nullable|image|max:2048',
+            'category_id' => 'nullable|exists:categories,id',
+            'category_active' => 'nullable|boolean',
         ]);
 
         $data = $request->only([
-            'title', 'slug', 'description', 'tag1', 'tag2', 'count', 'metaKeywords', 'metaTitle', 'metaDescription', 'customScript'
+            'title', 'slug', 'description', 'tag1', 'tag2', 'count', 'metaKeywords', 'metaTitle', 'metaDescription', 'customScript', 'category_id'
         ]);
+        $data['category_active'] = $request->category_id ? $request->boolean('category_active') : false;
 
         $data['slug'] = generate_slug($request->title);
 
@@ -82,7 +93,7 @@ class LiveZoneController extends Controller
 
     public function show($slug)
     {
-        $item = LiveZone::where('slug',$slug)->firstOrFail();
+        $item = LiveZone::with('category')->where('slug',$slug)->firstOrFail();
         return view('site.pages.livezone.show',compact('item'));
     }
 

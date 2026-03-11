@@ -61,6 +61,7 @@
         <table class="table table-striped table-hover text-white align-middle">
             <thead class="table-dark">
                 <tr>
+                    <th>Category</th>
                     <th>Image</th>
                     <th>Title</th>
                     <th>Price</th>
@@ -72,6 +73,7 @@
             <tbody>
                 @forelse($products as $p)
                 <tr>
+                    <td>{{ $p->category?->name ?? 'No category selected' }}</td>
                     <td>
                         @if($p->image)
                             <img src="/mall-products/{{ $p->image }}" width="60" class="rounded shadow-sm">
@@ -99,7 +101,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="6" class="text-center text-muted">No Products Found</td>
+                    <td colspan="7" class="text-center text-muted">No Products Found</td>
                 </tr>
                 @endforelse
             </tbody>

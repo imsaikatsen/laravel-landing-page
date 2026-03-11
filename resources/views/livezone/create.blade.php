@@ -11,6 +11,24 @@
             <div class="row">
 
                 <div class="col-md-6 mb-3">
+                    <label>Category</label>
+                    <select name="category_id" class="form-control">
+                        <option value="">Select Category</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3 d-flex align-items-end">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="live-category-active"
+                            name="category_active" value="1" @checked(old('category_active'))>
+                        <label class="form-check-label" for="live-category-active">Category Active</label>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
                     <label>Title</label>
                     <input type="text" name="title" class="form-control" required>
                 </div>
