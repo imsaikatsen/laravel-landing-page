@@ -58,7 +58,7 @@ class DatingZoneController extends Controller
 
     public function edit($id)
     {
-        $zone = DatingZone::findOrFail($id);
+        $zone = DatingZone::with('category')->findOrFail($id);
         $categories = Category::orderBy('name')->get();
 
         return view('datingzone.edit', compact('zone', 'categories'));
@@ -101,7 +101,7 @@ class DatingZoneController extends Controller
             'category_active' => $categoryActive,
         ]);
 
-        return redirect()->route('datingzone.index');
+        return redirect()->route('datingzone.edit', $zone->id)->with('success', 'Dating Zone updated successfully.');
     }
 
     public function show($slug)

@@ -57,7 +57,7 @@ class MiniAppController extends Controller
 
     public function edit($id): View
     {
-        $app = MiniApp::findOrFail($id);
+        $app = MiniApp::with('category')->findOrFail($id);
         $categories = Category::orderBy('name')->get();
 
         return view('miniapp.edit', compact('app', 'categories'));
@@ -102,7 +102,7 @@ class MiniAppController extends Controller
             'customScript' => $request->customScript
         ]);
 
-        return redirect()->route('miniapp.index')->with('success', 'Updated');
+        return redirect()->route('miniapp.edit', $app->id)->with('success', 'Updated');
     }
 
     public function show($slug)

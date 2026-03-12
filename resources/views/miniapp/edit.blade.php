@@ -1,10 +1,25 @@
 @extends('layouts.dashboard')
 
 @section('content')
+    @php
+        $selectedCategoryId = old('category_id', $app->category_id);
+        $selectedCategory = $categories->firstWhere('id', (int) $selectedCategoryId);
+        $categoryActive = $selectedCategoryId ? old('category_active', $app->category_active) : false;
+        $previewSlug = generate_slug(old('appTitle', $app->appTitle));
+        $publicUrl = $selectedCategory && $categoryActive
+            ? route('content.show', ['categorySlug' => $selectedCategory->slug, 'slug' => $previewSlug])
+            : route('content.show.simple', ['slug' => $previewSlug]);
+    @endphp
+
     <div class="stat-card p-4">
 
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <h5 class="mb-0">Edit Mini App</h5>
+            <div>
+                <h5 class="mb-1">Edit Mini App</h5>
+                <a href="{{ $publicUrl }}" class="small text-decoration-none" target="_blank" rel="noopener noreferrer">
+                    {{ $publicUrl }}
+                </a>
+            </div>
             <a href="{{ route('miniapp.index') }}" class="btn btn-secondary btn-sm">
                 <i class="fa fa-arrow-left me-1"></i> Back to List
             </a>
@@ -17,6 +32,12 @@
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>
+            </div>
+        @endif
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
             </div>
         @endif
 

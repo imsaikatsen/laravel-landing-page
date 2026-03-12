@@ -1,9 +1,33 @@
 @extends('layouts.dashboard')
 
 @section('content')
+    @php
+        $selectedCategoryId = old('category_id', $zone->category_id);
+        $selectedCategory = $categories->firstWhere('id', (int) $selectedCategoryId);
+        $categoryActive = $selectedCategoryId ? old('category_active', $zone->category_active) : false;
+        $previewSlug = generate_slug(old('title', $zone->title));
+        $publicUrl = $selectedCategory && $categoryActive
+            ? route('content.show', ['categorySlug' => $selectedCategory->slug, 'slug' => $previewSlug])
+            : route('content.show.simple', ['slug' => $previewSlug]);
+    @endphp
     <div class="stat-card">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <h4 class="mb-1">Edit Live Zone</h4>
+                <a href="{{ $publicUrl }}" class="small text-decoration-none" target="_blank" rel="noopener noreferrer">
+                    {{ $publicUrl }}
+                </a>
+            </div>
+            <a href="{{ route('livezone.index') }}" class="btn btn-secondary btn-sm">
+                <i class="fa fa-arrow-left me-1"></i> Back to List
+            </a>
+        </div>
 
-        <h4 class="mb-3">Edit Live Zone</h4>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
 
         <form action="{{ route('livezone.update', $zone->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -31,17 +55,16 @@
 
                 <div class="col-md-6 mb-3">
                     <label>Title</label>
-                    <input type="text" name="title" value="{{ $zone->title }}" class="form-control" required>
+                    <input type="text" name="title" value="{{ old('title', $zone->title) }}" class="form-control" required>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label>Slug</label>
-                    <input type="text" name="slug" value="{{ $zone->slug }}" class="form-control" required>
+                    <input type="text" name="slug" value="{{ old('slug', $zone->slug) }}" class="form-control" required>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label>Image</label>
-                    <!-- <input type="file" name="image" class="form-control"> -->
                     <input type="file" name="image" id="imageInput" class="form-control">
                     <div id="js-image-error" style="color: red; display: none; font-size: 0.8rem; margin-top: 5px;">
                         File is too large! Please select an image under 2MB.
@@ -53,34 +76,32 @@
 
                 <div class="col-12 mb-3">
                     <label>Description</label>
-                    <textarea name="description" rows="4" class="form-control summernote-editor" required>{{ $zone->description }}</textarea>
+                    <textarea name="description" rows="4" class="form-control summernote-editor" required>{{ old('description', $zone->description) }}</textarea>
                 </div>
-
 
                 <div class="col-md-6 mb-3">
                     <label>Meta Keywords</label>
-                    <input type="text" name="metaKeywords" value="{{ $zone->metaKeywords }}" class="form-control">
+                    <input type="text" name="metaKeywords" value="{{ old('metaKeywords', $zone->metaKeywords) }}" class="form-control">
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Meta Title</label>
-                    <input type="text" name="metaTitle" class="form-control form-control-lg" value="{{ old('metaTitle',$zone->metaTitle) }}">
+                    <input type="text" name="metaTitle" class="form-control form-control-lg" value="{{ old('metaTitle', $zone->metaTitle) }}">
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label>Meta Description</label>
-                    <input type="text" name="metaDescription" value="{{ $zone->metaDescription }}" class="form-control">
+                    <input type="text" name="metaDescription" value="{{ old('metaDescription', $zone->metaDescription) }}" class="form-control">
                 </div>
 
                 <div class="col-12 mb-3">
                     <label>Custom Script / HTML Inject</label>
-                    <textarea name="customScript" rows="4" class="form-control">{{ $zone->customScript }}</textarea>
+                    <textarea name="customScript" rows="4" class="form-control">{{ old('customScript', $zone->customScript) }}</textarea>
                 </div>
 
             </div>
 
             <button class="btn btn-primary mt-2">Update</button>
-            <a href="{{ route('livezone.index') }}" class="btn btn-secondary mt-2">Back</a>
 
         </form>
 
@@ -92,7 +113,7 @@
 
         if (file && file.size > limit) {
             $('#js-image-error').show();
-            $(this).val(''); // Reset file input
+            $(this).val('');
         } else {
             $('#js-image-error').hide();
         }

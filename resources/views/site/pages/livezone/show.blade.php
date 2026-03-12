@@ -51,6 +51,14 @@
             font-size: .7rem;
             margin-bottom: 6px;
         }
+
+        .livezone-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
     </style>
 
     <div class="livezone-wrapper">
@@ -64,6 +72,16 @@
             @endif
 
             <div class="livezone-body">
+                <div class="livezone-actions">
+                    <a href="{{ url()->previous() !== url()->current() ? url()->previous() : url('/') }}" class="btn btn-outline-light btn-sm">
+                        <i class="fa-solid fa-arrow-left me-1"></i> Back
+                    </a>
+                    @auth
+                        <a href="{{ route('livezone.edit', $item->id) }}" class="btn btn-outline-success btn-sm" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-solid fa-pen-to-square me-1"></i> Edit
+                        </a>
+                    @endauth
+                </div>
 
                 <span class="livezone-badge">LIVE ZONE</span>
 

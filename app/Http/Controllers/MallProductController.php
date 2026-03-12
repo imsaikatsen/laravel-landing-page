@@ -53,7 +53,7 @@ class MallProductController extends Controller
 
     public function edit($id)
     {
-        $product = MallProduct::findOrFail($id);
+        $product = MallProduct::with('category')->findOrFail($id);
         $categories = Category::orderBy('name')->get();
 
         return view('mallproducts.edit', compact('product', 'categories'));
@@ -93,7 +93,7 @@ class MallProductController extends Controller
 
         $product->update($data);
 
-        return redirect()->route('mallproducts.index')->with('success', 'Product Updated');
+        return redirect()->route('mallproducts.edit', $product->id)->with('success', 'Product updated successfully.');
     }
 
 
