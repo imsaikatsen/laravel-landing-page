@@ -15,7 +15,6 @@
                     <th>Category</th>
                     <th>Title</th>
                     <th>Image</th>
-                    <th>Description</th>
                     <th class="text-center">Actions</th>
                 </tr>
             </thead>
@@ -32,7 +31,6 @@
                             <span class="text-muted">No Image</span>
                         @endif
                     </td>
-                    <td class="text-truncate" style="max-width:200px;">{{ $zone->description }}</td>
                     <td class="text-center">
                         <div class="d-flex justify-content-center gap-2">
                             <a href="{{ route('livezone.edit', $zone->id) }}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>

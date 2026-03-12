@@ -151,6 +151,15 @@
             min-height: 220px;
         }
 
+        .note-editor .note-editable a {
+            color: #0d6efd !important;
+            text-decoration: underline !important;
+        }
+
+        .note-editor .note-editable a:hover {
+            color: #0a58ca !important;
+        }
+
         .swal2-container {
             z-index: 20000;
         }
