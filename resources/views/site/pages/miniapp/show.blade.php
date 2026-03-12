@@ -57,6 +57,29 @@
         font-size: 1.1rem;
     }
 
+    .miniapp-admin-btn {
+        position: absolute;
+        top: 20px;
+        right: 75px;
+        min-height: 45px;
+        padding: 0 16px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+        z-index: 2;
+    }
+
+    .miniapp-admin-btn:hover {
+        color: #00ff00;
+        border-color: rgba(0, 255, 0, 0.35);
+    }
+
     .miniapp-back-btn {
         position: absolute;
         top: 20px;
@@ -99,6 +122,12 @@
             aria-label="Go back">
             <i class="fa-solid fa-arrow-left"></i>
         </a>
+
+        @auth
+            <a href="{{ route('miniapp.edit', $item->id) }}" class="miniapp-admin-btn" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-pen-to-square me-2"></i> Edit
+            </a>
+        @endauth
 
         <!-- Floating Like Button -->
         <button class="miniapp-like-btn">

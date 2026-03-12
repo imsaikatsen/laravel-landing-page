@@ -86,6 +86,16 @@
 
 <div class="px-3 py-4">
     <div class="product-detail-card text-white">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <a href="{{ url()->previous() !== url()->current() ? url()->previous() : url('/') }}" class="btn btn-outline-light btn-sm">
+                <i class="fa-solid fa-arrow-left me-1"></i> Back
+            </a>
+            @auth
+                <a href="{{ route('mallproducts.edit', $item->id) }}" class="btn btn-outline-success btn-sm" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-pen-to-square me-1"></i> Edit
+                </a>
+            @endauth
+        </div>
 
         <div class="product-title">
             {{ $item->title }}

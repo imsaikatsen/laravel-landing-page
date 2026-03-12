@@ -51,7 +51,7 @@ class LiveZoneController extends Controller
 
     public function edit($id)
     {
-        $zone = LiveZone::findOrFail($id);
+        $zone = LiveZone::with('category')->findOrFail($id);
         $categories = Category::orderBy('name')->get();
 
         return view('livezone.edit', compact('zone', 'categories'));
@@ -88,7 +88,7 @@ class LiveZoneController extends Controller
 
         $zone->update($data);
 
-        return redirect()->route('livezone.index')->with('success', 'Live Zone updated successfully.');
+        return redirect()->route('livezone.edit', $zone->id)->with('success', 'Live Zone updated successfully.');
     }
 
     public function show($slug)
