@@ -16,10 +16,10 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h5 class="mb-1">Edit Mall Product</h5>
-            <a href="{{ $publicUrl }}" class="small text-decoration-none" target="_blank" rel="noopener noreferrer">
-                {{ $publicUrl }}
-            </a>
         </div>
+        <a href="{{ $publicUrl }}" class="small text-decoration-none badge bg-info" target="_blank" rel="noopener noreferrer">
+            View Content
+        </a>
         <a href="{{ route('mallproducts.index') }}" class="btn btn-secondary btn-sm">
             <i class="fa fa-arrow-left me-1"></i> Back to List
         </a>
