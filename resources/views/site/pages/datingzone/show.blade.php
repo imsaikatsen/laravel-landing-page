@@ -18,7 +18,7 @@
                 <img src="{{ asset('datingzones/'.$item->image) }}" class="card-img-top" alt="{{ $item->title }}">
                 @endif
                 <div class="card-body">
-                    <h2 class="card-title">{{ $item->title }}</h2>
+                    <h1 class="card-title">{{ $item->title }}</h1>
                     <div class="mb-2">
                         <span class="badge bg-success"> {{('Likes: ') }} {{ $item->count }}</span>
                         <span class="badge bg-secondary">{{ $item->tag1 }}</span>
@@ -32,7 +32,7 @@
             @if($item->customScript)
                 {!! $item->customScript !!}
             @endif
-            
+
         </div>
     </div>
 </div>

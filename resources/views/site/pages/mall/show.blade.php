@@ -97,9 +97,9 @@
             @endauth
         </div>
 
-        <div class="product-title">
+        <h1 class="product-title">
             {{ $item->title }}
-        </div>
+        </h1>
 
         @if($item->image)
             <img src="/mall-products/{{ $item->image }}" alt="{{ $item->title }}">

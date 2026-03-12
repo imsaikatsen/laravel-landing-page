@@ -7,16 +7,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 @if(isset($item) && $item != null)
-    <title>{{ $seo?->title }}</title>
-    <meta name="title" content="{{ ($item?->metaTitle) }} ">
+    <title>{{ isset($item->appTitle) ? $item->appTitle : $item?->title }}</title>
+    {{-- <meta name="title" content="{{ ($item?->metaTitle) }} "> --}}
     <meta name="keywords" content="{{ $item?->metaKeywords ?? 'default, keywords' }}">
     <meta name="description" content="{{ $item?->metaDescription ?? 'Default description' }}">
-@else 
+@else
     <title>{{ $seo?->title}}</title>
-    <meta name="title" content="{{ $seo?->meta_title}}">
+    {{-- <meta name="title" content="{{ $seo?->meta_title}}"> --}}
     <meta name="keywords" content="{{ $seo?->meta_keywords ?? 'default, keywords' }}">
     <meta name="description" content="{{ $seo?->meta_description ?? 'Default description' }}">
-@endif 
+@endif
 {!! $seo->customScript !!}
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
