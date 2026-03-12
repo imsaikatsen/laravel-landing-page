@@ -139,7 +139,7 @@
         <img src="/miniapps/{{ $item->appImage }}" class="miniapp-image" alt="{{ $item->appTitle }}">
 
         <!-- Title -->
-        <h4 class="miniapp-title">{{ $item->appTitle }}</h4>
+        <h1 class="miniapp-title">{{ $item->appTitle }}</h1>
 
         <!-- Description -->
         <div class="miniapp-description">

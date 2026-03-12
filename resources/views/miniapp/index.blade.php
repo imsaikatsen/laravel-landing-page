@@ -15,7 +15,6 @@
                     <th>Category</th>
                     <th>Icon</th>
                     <th>Title</th>
-                    <th>Description</th>
                     <th class="text-center">Actions</th>
                 </tr>
             </thead>
@@ -32,7 +31,6 @@
                         @endif
                     </td>
                     <td>{{ $app->appTitle }}</td>
-                    <td class="text-truncate" style="max-width:200px;">{{ $app->description }}</td>
                     <td class="text-center">
                         <div class="d-flex justify-content-center gap-2">
                             <a href="{{ route('miniapp.edit', $app->id) }}" class="btn btn-sm btn-warning" title="Edit Mini App">
@@ -51,7 +49,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="6" class="text-center text-muted">No Mini Apps Found</td>
+                    <td colspan="5" class="text-center text-muted">No Mini Apps Found</td>
                 </tr>
                 @endforelse
             </tbody>

@@ -85,9 +85,9 @@
 
                 <span class="livezone-badge">LIVE ZONE</span>
 
-                <div class="livezone-title">
+                <h1 class="livezone-title">
                     {{ $item->title }}
-                </div>
+                </h1>
 
                 <div class="livezone-divider"></div>
 
