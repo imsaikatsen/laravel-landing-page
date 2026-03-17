@@ -28,7 +28,7 @@ body{
 @php
     $isLanding = request()->is('/');
 @endphp
-<link rel="canonical" href="{{ $isLanding ? 'https://ks192.com' : request()->url() }}" />
+<link rel="canonical" href="{{ $isLanding ? 'https://ks192.com' : urldecode(request()->url()) }}" />
 </head>
 <body>
 
