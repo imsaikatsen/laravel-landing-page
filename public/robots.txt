@@ -1,5 +1,4 @@
 User-agent: Baiduspider
 User-agent: *
-allow: /
 Disallow: /cgi-bin/
 Sitemap: https://www.ks192.com/sitemap.xml
