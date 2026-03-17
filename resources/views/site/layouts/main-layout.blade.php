@@ -25,6 +25,10 @@ body{
     margin:0;
 }
 </style>
+@php
+    $isLanding = request()->is('/');
+@endphp
+<link rel="canonical" href="{{ $isLanding ? 'https://ks192.com' : request()->url() }}" />
 </head>
 <body>
 
