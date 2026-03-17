@@ -87,7 +87,7 @@ class SitemapGenerator
                 $items[] = [
                     'loc' => $base . $path,
                     'lastmod' => Carbon::now()->format('Y-m-d'),
-                    'priority' => '0.8',
+                    'priority' => '0.6',
                 ];
             });
 
