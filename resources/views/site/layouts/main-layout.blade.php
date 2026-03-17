@@ -12,8 +12,8 @@
     <meta name="keywords" content="{{ $item?->metaKeywords ?? 'default, keywords' }}">
     <meta name="description" content="{{ $item?->metaDescription ?? 'Default description' }}">
 @else
-    <title>{{ $seo?->title}}</title>
-    <!-- <meta name="title" content="{{ $seo?->meta_title}}"> -->
+    <!-- <title>{{ $seo?->title}}</title> -->
+    <meta name="title" content="{{ $seo?->meta_title}}">
     <meta name="keywords" content="{{ $seo?->meta_keywords ?? 'default, keywords' }}">
     <meta name="description" content="{{ $seo?->meta_description ?? 'Default description' }}">
 @endif
