@@ -31,7 +31,7 @@ class SitemapGenerator
             $xml .= "  <url>\n";
             $xml .= "    <loc>" . htmlspecialchars($item['loc'], ENT_QUOTES, 'UTF-8') . "</loc>\n";
             $xml .= "    <lastmod>" . ($item['lastmod'] ?? $now) . "</lastmod>\n";
-            $xml .= "    <changefreq>" . ($item['changefreq'] ?? 'weekly') . "</changefreq>\n";
+            $xml .= "    <changefreq>" . ($item['changefreq'] ?? 'daily') . "</changefreq>\n";
             $xml .= "    <priority>" . ($item['priority'] ?? '0.6') . "</priority>\n";
             $xml .= "  </url>\n";
         }
