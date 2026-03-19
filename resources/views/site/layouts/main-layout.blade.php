@@ -8,10 +8,12 @@
 
 @if(isset($item) && $item != null)
     <title>{{ isset($item->appTitle) ? $item->appTitle : $item?->title }}</title>
+    <meta name="title" content="{{ isset($item->appTitle) ? $item->appTitle : $item?->title }}">
     <meta name="keywords" content="{{ $item?->metaKeywords ?? 'default, keywords' }}">
     <meta name="description" content="{{ $item?->metaDescription ?? 'Default description' }}">
 @else
     <title>{{ $seo?->title}}</title>
+     <meta name="title" content="{{ $seo?->title }}">
     <meta name="keywords" content="{{ $seo?->meta_keywords ?? 'default, keywords' }}">
     <meta name="description" content="{{ $seo?->meta_description ?? 'Default description' }}">
 @endif
