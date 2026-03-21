@@ -29,8 +29,12 @@ body{
 </style>
 @php
     $isLanding = request()->is('/');
+    $url = urldecode(request()->url());
+    if (!str_starts_with($url, 'https://www.')) {
+        $url = preg_replace('#^https://#', 'https://www.', $url);
+    }
 @endphp
-<link rel="canonical" href="{{ $isLanding ? 'https://www.ks192.com/' : urldecode(request()->url()) }}" />
+<link rel="canonical" href="{{ $isLanding ? 'https://www.ks192.com/' : $url }}" />
 </head>
 <body>
 
