@@ -17,6 +17,14 @@
     <meta name="keywords" content="{{ $seo?->meta_keywords ?? 'default, keywords' }}">
     <meta name="description" content="{{ $seo?->meta_description ?? 'Default description' }}">
 @endif
+@php
+    $isLanding = request()->is('/');
+    $url = urldecode(request()->url());
+    if (!str_starts_with($url, 'https://www.')) {
+        $url = preg_replace('#^https://#', 'https://www.', $url);
+    }
+@endphp
+<link rel="canonical" href="{{ $isLanding ? 'https://www.ks192.com/' : $url }}" />    
 {!! $seo->customScript !!}
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
@@ -27,14 +35,6 @@ body{
     margin:0;
 }
 </style>
-@php
-    $isLanding = request()->is('/');
-    $url = urldecode(request()->url());
-    if (!str_starts_with($url, 'https://www.')) {
-        $url = preg_replace('#^https://#', 'https://www.', $url);
-    }
-@endphp
-<link rel="canonical" href="{{ $isLanding ? 'https://www.ks192.com/' : $url }}" />
 </head>
 <body>
 
