@@ -37,7 +37,7 @@ class SitemapGenerator
         }
 
         $xml .= '</urlset>';
-        $path = public_path('sitemap.xml');
+        $path = public_path('site.xml');
 
         try {
             File::put($path, $xml);
