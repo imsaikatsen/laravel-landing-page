@@ -31,6 +31,7 @@ class MiniAppController extends Controller
             'appImage' => 'required|image',
             'category_id' => 'nullable|exists:categories,id',
             'category_active' => 'nullable|boolean',
+            'is_hidden' => 'required'
         ]);
 
         $categoryId = $validated['category_id'] ?? null;
@@ -49,7 +50,9 @@ class MiniAppController extends Controller
             'metaKeywords' => $request->metaKeywords,
             'metaTitle' => $request->metaTitle,
             'metaDescription' => $request->metaDescription,
-            'customScript' => $request->customScript
+            'customScript' => $request->customScript,
+            'is_hidden' => $request->is_hidden,
+
         ]);
 
         return redirect()->route('miniapp.index')->with('success', 'Mini App Added');
@@ -73,6 +76,7 @@ class MiniAppController extends Controller
             'appImage' => 'nullable|image',
             'category_id' => 'nullable|exists:categories,id',
             'category_active' => 'nullable|boolean',
+            'is_hidden' => 'required'
         ]);
 
         $categoryId = $validated['category_id'] ?? null;
@@ -89,7 +93,6 @@ class MiniAppController extends Controller
             $request->appImage->move(public_path('miniapps'), $imageName);
             $app->appImage = $imageName;
         }
-
         $app->update([
             'appTitle' => $validated['appTitle'],
             'description' => $validated['description'],
@@ -99,7 +102,8 @@ class MiniAppController extends Controller
             'metaKeywords' => $request->metaKeywords,
             'metaTitle' => $request->metaTitle,
             'metaDescription' => $request->metaDescription,
-            'customScript' => $request->customScript
+            'customScript' => $request->customScript,
+            'is_hidden' => $request->is_hidden,
         ]);
 
         return redirect()->route('miniapp.edit', $app->id)->with('success', 'Updated');

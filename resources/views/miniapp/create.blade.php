@@ -78,6 +78,14 @@
                 <textarea name="customScript" class="form-control" placeholder="Custom JS / Script">{{ old('customScript') }}</textarea>
             </div>
 
+            <div class="mb-3">
+                <label class="form-label">Hidden</label>
+                <select name="is_hidden" class="form-control form-control-lg">
+                    <option value="No" {{ old('is_hidden') == 'No' ? 'selected' : '' }}>No</option>
+                    <option value="Yes" {{ old('is_hidden') == 'Yes' ? 'selected' : '' }}>Yes</option>
+                </select>
+            </div>
+
             <button class="btn btn-success btn-lg"><i class="fa fa-save me-1"></i> Save</button>
         </form>
 

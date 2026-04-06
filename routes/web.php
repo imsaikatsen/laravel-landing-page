@@ -15,6 +15,7 @@ use App\Http\Controllers\MallProductController;
 use App\Http\Controllers\MiniAppController;
 use App\Http\Controllers\PageSeoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RedirectionController;
 use App\Http\Controllers\Site\LandingPageController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SlugController;
@@ -127,6 +128,15 @@ Route::prefix('admin')->group(function () {
         Route::get('/mallproducts/{id}/edit', [MallProductController::class, 'edit'])->name('mallproducts.edit');
         Route::put('/mallproducts/{id}/update', [MallProductController::class, 'update'])->name('mallproducts.update');
         Route::delete('/mallproducts/{id}/destroy', [MallProductController::class, 'destroy'])->name('mallproducts.destroy');
+    });
+
+     Route::middleware(['auth'])->group(function () {
+        Route::get('/redirection', [RedirectionController::class, 'index'])->name('redirection.index');
+        Route::get('/redirection/create', [RedirectionController::class, 'create'])->name('redirection.create');
+        Route::post('/redirection/store', [RedirectionController::class, 'store'])->name('redirection.store');
+        Route::get('/redirection/{id}/edit', [RedirectionController::class, 'edit'])->name('redirection.edit');
+        Route::put('/redirection/{id}/update', [RedirectionController::class, 'update'])->name('redirection.update');
+        Route::delete('/redirection/{id}/destroy', [RedirectionController::class, 'destroy'])->name('redirection.destroy');
     });
 
     Route::middleware(['auth'])->group(function () {

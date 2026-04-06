@@ -21,6 +21,7 @@ class MiniApp extends Model
         'description',
         'category_id',
         'category_active',
+        'is_hidden'
     ];
 
     public function category(): BelongsTo
